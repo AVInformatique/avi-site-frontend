@@ -1,0 +1,149 @@
+.navigation {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.5rem 0rem;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+    z-index: 9999;
+}
+
+/* .navigation.computer-view {
+    display: block;
+} */
+
+.navigation.tel-view {
+    display: none;
+}
+
+.logo {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    margin-left: 1rem;
+}
+
+.navigation-menu {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation-menu ul {
+    display: flex;
+    padding: 0;
+}
+
+.navigation-menu li {
+    list-style: none;
+    margin: 0 1rem;
+}
+
+.navigation-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 100%;
+}
+
+.navigation-menu li.active a{
+    color: var(--red-insa);
+}
+
+.navigation-menu li a:hover {
+    color: var(--red-insa);
+}
+
+.nav-login {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    margin-right: 1rem;
+
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 0 10px;
+    width: 150px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+}
+
+.nav-login:hover {
+    color: white;
+    /* width:0; */
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    /* background-color: rgba(104, 85, 224, 1); */
+    background-color: var(--red-insa);
+}
+
+.hamburger {
+    /* // removes default border on button element */
+    border: 0;
+    height: 40px;
+    width: 40px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #283b8b;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    /* // positions the icon to the right and center aligns it vertically */
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.hamburger:hover {
+    background-color: #2642af;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation.computer-view {
+        display: none;
+    }
+
+    .navigation.tel-view {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .navigation-menu ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 77px);
+        background-color: white;
+        border-top: 1px solid black;
+        display: none;
+    }
+
+    .navigation-menu li {
+        text-align: center;
+        margin: 0;
+    }
+
+    .navigation-menu li a {
+        color: black;
+        width: 100%;
+        padding: 1.5rem 0;
+    }
+
+    .navigation-menu li:hover {
+        background-color: #eee;
+    }
+
+    .navigation-menu.expanded ul {
+        display: block;
+    }
+}

@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/navbar";
 
 // Pages
 import Home from "./pages/home";
+import Alumni from "./pages/alumnis";
 
 function App() {
     const location = useLocation();
@@ -24,6 +25,7 @@ function App() {
             }
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/alumni" element={<Alumni />} />
             </Routes>
         </Fragment>
     );

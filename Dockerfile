@@ -1,11 +1,27 @@
-FROM node:18.12.1-alpine
-RUN mkdir -p /usr/src/app
-COPY . /usr/src/app/
+# Fetching the latest node image on apline linux
+FROM node:18.12.1-alpine AS builder
 
-# Create app directory
-WORKDIR /usr/src/app
+# Declaring env
+ENV NODE_ENV production
 
-# Install app dependencies
+# Setting up the work directory
+WORKDIR /app
+
+# Installing dependencies
+COPY ./package*.json ./
 RUN npm install
 
-CMD npm start
+# Copying all the files in our project
+COPY . .
+
+# Building our application
+RUN npm run build
+
+# Fetching the latest nginx image
+FROM nginx
+
+# Copying built assets from builder
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copying our nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf

@@ -7,7 +7,7 @@ class Alumnis extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://avi-back.francecentral.azurecontainer.io/api/v1/users").then((res) => {
+    axios.get("http://avi-backend.francecentral.azurecontainer.io/api/v1/users").then((res) => {
       const alumnis = res.data;
       this.setState({ alumnis });
     });

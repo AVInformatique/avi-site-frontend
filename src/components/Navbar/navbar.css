@@ -1,6 +1,6 @@
 .navigation {
-    height: 60px;
-    width: 100%;
+    height: 70px;
+    width: 70%;
     display: flex;
     align-items: center;
     position: relative;
@@ -9,26 +9,24 @@
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 9999;
+    margin: auto;
+    border-radius: 25px;
+    margin-top: 1em;
 }
-
-/* .navigation.computer-view {
-    display: block;
-} */
 
 .navigation.tel-view {
     display: none;
 }
 
-.logo {
-    text-decoration: none;
-    color: black;
-    font-size: 1.3rem;
+.logo img {
     margin-left: 1rem;
+    height: 120px;
+    width: 120px;
+    /* margin-right: 0.5rem; */
 }
 
 .navigation-menu {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 .navigation-menu ul {
@@ -37,23 +35,34 @@
 }
 
 .navigation-menu li {
-    list-style: none;
-    margin: 0 1rem;
+    list-style: none;   
+    margin: 0 0.1rem;
 }
 
 .navigation-menu li a {
     text-decoration: none;
+    color: var(--red-insa);
+    font-size: 1.2rem;
+    padding: 10px;
     color: black;
-    display: block;
-    width: 100%;
 }
 
-.navigation-menu li.active a{
+.navigation-menu li.active a {
+    background-color: #FF4363;
+    border-radius: 15px;
     color: var(--red-insa);
+    font-size: 1.2rem;
+    padding: 10px;
+    color: white;
 }
 
 .navigation-menu li a:hover {
+    background-color: #FF4363;
+    border-radius: 15px;
     color: var(--red-insa);
+    font-size: 1.2rem;
+    padding: 10px;
+    color: white;
 }
 
 .nav-login {
@@ -61,7 +70,6 @@
     text-align: center;
     color: black;
     margin-right: 1rem;
-
     cursor: pointer;
     border: 0;
     border-radius: 4px;
@@ -103,7 +111,41 @@
     background-color: #2642af;
 }
 
+@media screen and (max-width: 970px) {
+    .navigation {
+        height: 70px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 0.5rem 0rem;
+        background-color: #fff;
+        color: black;
+        box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+        z-index: 9999;
+        margin: auto;
+        border-radius: 25px;
+        margin-top: 1em;
+    }
+
+    .navigation-menu li {
+        list-style: none;
+        padding: 3px;
+    }
+
+    .navigation-menu {
+        margin: auto;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .logo img {
+        margin-left: 0.5rem;
+        height: 100px;
+        width: 100px;
+        /* margin-right: 0.5rem; */
+    }
+
     .navigation.computer-view {
         display: none;
     }
@@ -119,28 +161,55 @@
     .navigation-menu ul {
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 73px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 77px);
+        box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
         background-color: white;
-        border-top: 1px solid black;
+        /* border: 1px solid black; */
         display: none;
+        border-radius: 25px;
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
     }
 
     .navigation-menu li {
         text-align: center;
-        margin: 0;
+        margin: auto;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        width: 50%;
+        /* border-bottom: 1px solid black; */
+        /* background-color: #FF4363;
+        border-radius: 15px; */
     }
 
     .navigation-menu li a {
+        border-radius: 15px;
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 5px 0;
         color: black;
-        width: 100%;
-        padding: 1.5rem 0;
     }
 
-    .navigation-menu li:hover {
-        background-color: #eee;
+    .navigation-menu li a:hover {
+        background-color: #FF4363;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 5px 0;
+        color: white;
+        width: 75%;
+    }
+
+    .navigation-menu li.active a{
+        background-color: #FF4363;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 5px 0;
+        color: white;
+        width: 75%;
     }
 
     .navigation-menu.expanded ul {

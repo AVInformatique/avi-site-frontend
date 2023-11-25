@@ -18,7 +18,8 @@ function App() {
                 (location.pathname === "/" ||
                 location.pathname === "/events" ||
                 location.pathname === "/alumni" ||
-                location.pathname === "/about-us") && (
+                location.pathname === "/about-us" ||
+                location.pathname === "/guide") && (
                     <Navbar />
                 )
             }

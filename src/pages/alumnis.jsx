@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Alumnis from "../components/Alumni/alumnis";
+import Alumnis from "/src/components/Alumni/alumnis";
 
 const Alumni = function () {
     return (

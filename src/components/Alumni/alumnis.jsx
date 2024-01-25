@@ -1,5 +1,10 @@
-import axios from "axios";
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
+import {getAlumnis} from "/src/services/alumniService.js";
+import "./alumnis.css";
+
+// Component for displaying all alumnis
+import {AlumniBox} from "./alumniBox.jsx";
 
 class Alumnis extends Component {
   state = {
@@ -7,21 +12,25 @@ class Alumnis extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://avi-backend.francecentral.azurecontainer.io/api/v1/users").then((res) => {
-      const alumnis = res.data;
-      this.setState({ alumnis });
-    });
+    getAlumnis().then((data) => {
+        this.setState({ alumnis: data });
+    })
+        .catch((error) => console.log(error));
   }
 
   render() {
+      // Each row contains 3 alumni boxes
+      // Config in alumnis.css
     return (
       <div>
         <h1>Alumnis</h1>
-        <ul>
+        <div className="row">
           {this.state.alumnis.map((alumni) => (
-            <li key={alumni.id}>{alumni.name}</li>
+            <div className="column" key={alumni.id}>
+              <AlumniBox name={alumni.name} major={alumni.major} promotion={alumni.promotion} image={alumni.image} />
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

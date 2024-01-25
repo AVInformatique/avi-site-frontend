@@ -1,35 +1,132 @@
-import {Navbar, Nav, Button} from "react-bootstrap";
-import React, {Component} from "react";
+import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
 import "/src/assets/avi.svg";
 
+const Navbar = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [activePath, setActivePath] = useState("/");
+    // console.log(window.location.pathname);
 
-class NavBar extends Component {
-    render() {
-        // set NavBar background color to light and expand to large
-        // set the brand to AVI logo
-        // set the buttons to Home and Alumni
-        // style of buttons is set in navbar.css
-        return (
-            <Navbar bg="light" expand="lg" className={"navbar"}>
-                <Navbar.Brand href="/" className={"logo"}>
-                    <img
-                        src="/src/assets/avi.svg"
-                        className="d-inline-block align-top"
-                        alt="AVI logo"
-                    />
-                </Navbar.Brand>
-                <Nav>
-                    <Button className="navButton active" onClick={() => window.location.href = "/"}>Home
-                    </Button>
-                    <Button className="navButton active" onClick={() => window.location.href = "/alumni"}>Alumni
-                    </Button>
-                    <Button className="navButton active" onClick={() => window.location.href = "/guide"}>Guide &amp; Tutor
-                    </Button>
-                </Nav>
-            </Navbar>
-        );
-    }
-}
+    useEffect(() => {
+        const currentPath = window.location.pathname;
+        setActivePath(currentPath);
 
-export default NavBar;
+        const handleNavigation = () => {
+            const newPath = window.location.pathname;
+            setActivePath(newPath);
+        };
+        window.addEventListener("pathchange", handleNavigation);
+
+        return () => {
+            window.removeEventListener("pathchange", handleNavigation);
+        };
+    }, []);
+
+    return (
+        <Fragment>
+            <nav className="navigation computer-view">
+                <a href="/" className="logo"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+
+                <button
+                    className="hamburger"
+                    onClick={() => {
+                        setIsExpanded(!isExpanded);
+                    }}
+                >
+                    {/* icon from heroicons.com */}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </button>
+
+                <div
+                    className={
+                        isExpanded ? "navigation-menu expanded" : "navigation-menu"
+                    }
+                >
+                    <ul>
+                        <li className={activePath === "/" ? "active" : ""}>
+                            <a href="/">Home</a>
+                        </li>
+                        <li className={activePath === "/events" ? "active" : ""}>
+                            <a href="/events">Events</a>
+                        </li>
+                        <li className={activePath === "/alumni" ? "active" : ""}>
+                            <a href="/alumni">Alumnis</a>
+                        </li>
+                        <li className={activePath === "/guide" ? "active" : ""}>
+                            <a href="/guide">Guide & Tutor</a>
+                        </li>
+                        {/* <li>
+                            <a href="/log-in" className="nav-login">Login</a>
+                        </li> */}
+                    </ul>
+                </div>
+
+                {/* <a href="/log-in" className="nav-login">Login</a> */}
+            </nav>
+
+            <nav className="navigation tel-view">
+                <a href="/" className="logo"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+
+                <button
+                    className="hamburger"
+                    onClick={() => {
+                        setIsExpanded(!isExpanded);
+                    }}
+                >
+                    {/* icon from heroicons.com */}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </button>
+
+                <div
+                    className={
+                        isExpanded ? "navigation-menu expanded" : "navigation-menu"
+                    }
+                >
+                    <ul>
+                    <li className={activePath === "/" ? "active" : ""}>
+                            <a href="/">Home</a>
+                        </li>
+                        <li className={activePath === "/events" ? "active" : ""}>
+                            <a href="/events">Events</a>
+                        </li>
+                        <li className={activePath === "/alumni" ? "active" : ""}>
+                            <a href="/alumni">Alumnis</a>
+                        </li>
+                        <li className={activePath === "/guide" ? "active" : ""}>
+                            <a href="/guide">Guide & Tutor</a>
+                        </li>
+                        {/* <li>
+                            <a href="/log-in">Login</a>
+                        </li> */}
+                    </ul>
+                </div>
+
+                {/* <a href="/log-in" className="nav-login">Login</a> */}
+            </nav>
+        </Fragment>
+    );
+};
+
+export default Navbar;

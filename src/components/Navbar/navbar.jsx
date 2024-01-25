@@ -1,11 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
-import "/src/assets/avi.svg";
+import { aviLogo } from "/src/constants";
+
+
 
 const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [activePath, setActivePath] = useState("/");
-    // console.log(window.location.pathname);
 
     useEffect(() => {
         const currentPath = window.location.pathname;
@@ -25,7 +26,7 @@ const Navbar = () => {
     return (
         <Fragment>
             <nav className="navigation computer-view">
-                <a href="/" className="logo"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+                <a href="/" className="logo"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button
                     className="hamburger"
@@ -58,7 +59,7 @@ const Navbar = () => {
                             <a href="/">Home</a>
                         </li>
                         <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>
@@ -76,7 +77,7 @@ const Navbar = () => {
             </nav>
 
             <nav className="navigation tel-view">
-                <a href="/" className="logo"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+                <a href="/" className="logo"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button
                     className="hamburger"
@@ -109,7 +110,7 @@ const Navbar = () => {
                             <a href="/">Home</a>
                         </li>
                         <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>

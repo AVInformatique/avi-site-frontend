@@ -3,14 +3,13 @@
 
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'react-bootstrap';
 import PropTypes from "prop-types";
-import "/src/assets/minh.jpg";
 
 
 export const AlumniBox = ({ name, major, promotion, image }) => {
     return (
         <>
             <Card className="alumni-box">
-                <CardImg variant="top" src={"/src/assets/minh.jpg"} style={{ width: "30%", height: "30%" }} />
+                <CardImg variant="top" src={image} style={{ width: "30%", height: "30%" }} />
                 <CardBody>
                     <CardTitle>{name}</CardTitle>
                     <CardSubtitle>{major}</CardSubtitle>

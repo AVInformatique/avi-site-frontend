@@ -2,8 +2,7 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import "./home.css";
-import "/src/assets/avi.svg";
-import "/src/assets/repas_noel_23.jpg"
+import {aviLogo, repasNoel} from "/src/constants";
 
 class Home extends Component {
     render() {
@@ -16,7 +15,7 @@ class Home extends Component {
             <div className="left-side">
                 <div className={"text-part"}>
                     {/* Logo here */}
-                    <img src="/src/assets/avi.svg" alt="AVI" style={{width: "50%", height: "50%"}}/>
+                    <img src={aviLogo} alt="AVI" style={{width: "50%", height: "50%"}}/>
                     {/* Header here */}
                     <h1 className={"header"}>Association des Vietnamiens à l'INSA</h1>
                     {/* Introduction here */}
@@ -53,7 +52,7 @@ class Home extends Component {
         // Right side
         const rightSide = (
             <div className="right-side">
-                <img src="/src/assets/repas_noel_23.jpg" alt="AVI" style={{width: "80%", height: "80%"}}/>
+                <img src={repasNoel} alt="AVI" style={{width: "80%", height: "80%"}}/>
             </div>
         );
 

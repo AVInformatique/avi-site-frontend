@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
-import "/src/assets/avi.svg";
+import aviLogo from "/src/assets/avi.svg";
 
 const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
         <Fragment>
             <nav className="navigation computer-view">
-                <a href="/" className="logo-nav"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+                <a href="/" className="logo-nav"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button
                     className="hamburger"
@@ -58,7 +58,7 @@ const Navbar = () => {
                             <a href="/">Home</a>
                         </li>
                         <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>
@@ -71,12 +71,11 @@ const Navbar = () => {
                         </li> */}
                     </ul>
                 </div>
-
                 <a href="/signin" className="nav-login">Login</a>
             </nav>
 
             <nav className="navigation tel-view">
-                <a href="/" className="logo"><img src={"/src/assets/avi.svg"} alt="Logo AVI"/></a>
+                <a href="/" className="logo"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button
                     className="hamburger"
@@ -109,7 +108,7 @@ const Navbar = () => {
                             <a href="/">Home</a>
                         </li>
                         <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>
@@ -120,6 +119,15 @@ const Navbar = () => {
                         <li>
                             <a href="/signin" className="login">Login</a>
                         </li>
+                        <li className={activePath === "/alumni" ? "active" : ""}>
+                            <a href="/alumni">Alumnis</a>
+                        </li>
+                        <li className={activePath === "/guide" ? "active" : ""}>
+                            <a href="/guide">Guide & Tutor</a>
+                        </li>
+                        {/* <li>
+                            <a href="/log-in">Login</a>
+                        </li> */}
                     </ul>
                 </div>
 

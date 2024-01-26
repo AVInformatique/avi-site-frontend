@@ -23,6 +23,6 @@ export const AlumniBox = ({ name, major, promotion, image }) => {
 AlumniBox.propTypes = {
     name: PropTypes.string.isRequired,
     major: PropTypes.string.isRequired,
-    promotion: PropTypes.string.isRequired,
+    promotion: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired
 };

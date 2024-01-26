@@ -1,9 +1,31 @@
-import { collection, getDocs, query } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 
 function getEvents() {
     const eventRef = collection(db, 'events');
     const q = query(eventRef);
+    return new Promise((resolve, reject) => {
+        getDocs(q)
+            .then(querySnapshot => {
+                const events = [];
+                querySnapshot.forEach(doc => {
+                    const event = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    events.push(event);
+                });
+                resolve(events);
+            })
+            .catch(err => {
+                reject(err);
+            });
+    });
+}
+
+function getEventsByYear(year) {
+    const eventRef = collection(db, 'events');
+    const q = query(eventRef, where('year', '==', year));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then(querySnapshot => {
@@ -82,6 +104,7 @@ function deleteEventById(id) {
 
 export {
     getEvents,
+    getEventsByYear,
     addEvent,
     getEventById,
     updateEventById,

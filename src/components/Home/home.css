@@ -1,0 +1,88 @@
+/* Divide the screen into 2 columns
+    Left side: 1/2 of the screen
+    Right side: 1/2 of the screen
+*/
+
+/* Left side
+*/
+body {
+    background-color: #ecfdfd;
+    margin: 0;
+}
+
+.left-side {
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin-top: 50px;
+}
+
+/* Right side */
+.right-side {
+    float: right;
+    width: 50%;
+    height: 100%;
+    /* margin-top: -102px; */
+}
+
+/* Set the text part float to center, 20% from the top of the screen
+20% from the left of the screen
+*/
+.text-part {
+    margin-top: 15%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: black;
+}
+
+.logo-home {
+    width: 50%;
+    height: 50%;
+    margin-left: -10%;
+}
+
+/* Change font to Roboto, 100px, bold */
+.header {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Change font of intro paragraph to Roboto, 30px, normal
+and align it to the left
+*/
+.intro {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+}
+
+/* button-more
+Background color is red, text color is white
+When hover, background color is white, text color is red
+Align to the center of the screen
+ */
+.button-more {
+    margin-top: 5%;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.button-more:hover {
+    background-color: #ffffff;
+    color: #ff0000;
+}
+
+.image-avi {
+    width: 100%;
+    height: 100%;
+    /* margin-top: 10%; */
+}

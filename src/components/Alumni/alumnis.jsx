@@ -7,32 +7,46 @@ import "./alumnis.css";
 import {AlumniBox} from "./alumniBox.jsx";
 
 class Alumnis extends Component {
-  state = {
-    alumnis: [],
-  };
+    state = {
+        alumnis: [],
+    };
 
-  componentDidMount() {
-    getAlumnis().then((data) => {
-        this.setState({ alumnis: data });
-    })
-        .catch((error) => console.log(error));
-  }
+    componentDidMount() {
+        getAlumnis().then((data) => {
+            this.setState({ alumnis: data });
+        })
+            .catch((error) => console.log(error));
+    }
 
-  render() {
-      // Each row contains 3 alumni boxes
-      // Config in alumnis.css
-    // return (
-      // <div>
-      //   <div className="row">
-      //     {this.state.alumnis.map((alumni) => (
-      //       <div className="column" key={alumni.id}>
-      //         <AlumniBox name={alumni.name} major={alumni.major} promotion={alumni.promotion} image={alumni.image} />
-      //       </div>
-      //     ))}
-      //   </div>
-      // </div>
-    // );
-  }
+    render() {
+        // Each row contains 3 alumni boxes
+        // Config in alumnis.css
+        return (
+            <div className="header">
+                <h1>ALUMNIS</h1>
+                <p>sgdfgdfgdfgdfgdfdddddddddddddddddddddddddddddddddfg</p>
+                <div className="searchBar">
+                    <input type="text" placeholder="Search.." name="search" />
+                    <button type="submit"><i className="fa fa-search"></i></button>
+                </div>
+            </div>
+
+
+
+
+
+
+        // <div>
+        //   <div className="row">
+        //     {this.state.alumnis.map((alumni) => (
+        //       <div className="column" key={alumni.id}>
+        //         <AlumniBox name={alumni.name} major={alumni.major} promotion={alumni.promotion} image={alumni.image} />
+        //       </div>
+        //     ))}
+        //   </div>
+        // </div>
+        );
+    }
 }
 
 export default Alumnis;

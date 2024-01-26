@@ -19,11 +19,10 @@ class Alumnis extends Component {
   }
 
   render() {
-      // Each row contains 3 alumni boxes
-      // Config in alumnis.css
+    // Each row contains 3 alumni boxes
+    // Config in alumnis.css
     return (
       <div>
-        <h1>Alumnis</h1>
         <div className="row">
           {this.state.alumnis.map((alumni) => (
             <div className="column" key={alumni.id}>

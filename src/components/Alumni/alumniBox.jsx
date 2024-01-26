@@ -9,7 +9,7 @@ export const AlumniBox = ({ name, major, promotion, image }) => {
     return (
         <>
             <Card className="alumni-box">
-                <CardImg variant="top" src={image} style={{ width: "30%", height: "30%" }} />
+                <CardImg variant="top" src={image} style={{ width: "50%", height: "50%" }} />
                 <CardBody>
                     <CardTitle>{name}</CardTitle>
                     <CardSubtitle>{major}</CardSubtitle>

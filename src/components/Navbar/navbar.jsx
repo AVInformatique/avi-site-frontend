@@ -2,10 +2,10 @@ import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
 import aviLogo from "/src/assets/avi.svg";
 
-
 const Navbar = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [activePath, setActivePath] = useState("/");
+    // console.log(window.location.pathname);
 
     useEffect(() => {
         const currentPath = window.location.pathname;
@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
         <Fragment>
             <nav className="navigation computer-view">
-                <a href="/" className="logo"><img src={aviLogo} alt="Logo AVI"/></a>
+                <a href="/" className="logo-nav"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button
                     className="hamburger"
@@ -66,13 +66,12 @@ const Navbar = () => {
                         <li className={activePath === "/guide" ? "active" : ""}>
                             <a href="/guide">Guide & Tutor</a>
                         </li>
-                        {/* <li>
-                            <a href="/log-in" className="nav-login">Login</a>
+                        {/* <li className="login-li">
+                            <a href="/log-in" className="nav-login">Sign in</a>
                         </li> */}
                     </ul>
                 </div>
-
-                {/* <a href="/log-in" className="nav-login">Login</a> */}
+                <a href="/signin" className="nav-login">Login</a>
             </nav>
 
             <nav className="navigation tel-view">
@@ -110,6 +109,15 @@ const Navbar = () => {
                         </li>
                         <li className={activePath === "/events" ? "active" : ""}>
                             <a href="/event">Events</a>
+                        </li>
+                        <li className={activePath === "/alumni" ? "active" : ""}>
+                            <a href="/alumni">Alumnis</a>
+                        </li>
+                        <li className={activePath === "/guide" ? "active" : ""}>
+                            <a href="/guide">Guide & Tutor</a>
+                        </li>
+                        <li>
+                            <a href="/signin" className="login">Login</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>

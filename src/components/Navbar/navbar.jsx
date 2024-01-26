@@ -1,7 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
-import { aviLogo } from "/src/constants";
-
+import aviLogo from "/src/assets/avi.svg";
 
 
 const Navbar = () => {

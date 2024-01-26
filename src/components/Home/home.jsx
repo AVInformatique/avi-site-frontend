@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import "./home.css";
-import {aviLogo, repasNoel} from "/src/constants";
+import aviLogo from "/src/assets/avi.svg";
+import repasNoel from "/src/assets/repas_noel_23.jpg";
 
 class Home extends Component {
     render() {

@@ -11,6 +11,7 @@ import HomePage from "/src/pages/home";
 import Alumni from "/src/pages/alumnis";
 import NotFound from "/src/pages/notfound";
 import Guide from "/src/pages/guide";
+import Events from "/src/pages/events";
 
 function App() {
     const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
         <Fragment>
             {
                 (location.pathname === "/" ||
+                location.pathname === "/events" ||
                 location.pathname === "/alumni" ||
                 location.pathname === "/guide")
                 && (
@@ -27,6 +29,7 @@ function App() {
             }
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/events" element={<Events />} />
                 <Route path="/alumni" element={<Alumni />} />
                 <Route path="/guide" element={<Guide />} />
                 <Route path="*" element={<NotFound />} />

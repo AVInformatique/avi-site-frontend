@@ -1,0 +1,58 @@
+.button-large-yellow {
+    height: 84px;
+    width: 320px;
+  }
+  
+  .button-large-yellow .text {
+    color: #ffffff;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 118px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 14px;
+  }
+  
+  .button-large-yellow.variant-2 {
+    background-color: #ff4363;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .button-large-yellow.default .overlap-group {
+    background-color: #ffba07;
+    border-radius: 20px;
+    height: 70px;
+    left: 10px;
+    position: relative;
+    top: 7px;
+    width: 300px;
+  }
+  
+  .button-large-yellow.variant-3 .overlap-group {
+    background-color: #ff4363;
+    border-radius: 15px;
+    height: 70px;
+    left: 10px;
+    position: relative;
+    top: 7px;
+    width: 300px;
+  }
+  
+  .button-large-yellow.variant-2 .overlap-group {
+    color: #ffffff;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 36px;
+    font-weight: 700;
+    left: 122px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+  }
+  

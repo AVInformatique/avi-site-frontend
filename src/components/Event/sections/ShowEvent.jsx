@@ -52,9 +52,7 @@ const ShowEvent = () => {
 
             <div className="row filter-bar">
                 <div className="col l-1 search-icon">
-                    <ButtonIcon icon = {<IoMdSearch 
-
-                    />} ></ButtonIcon>
+                    <ButtonIcon icon = {<IoMdSearch/>} ></ButtonIcon>
                 </div>
                 <div className="col l-2">
                     <DropDown

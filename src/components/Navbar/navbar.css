@@ -3,13 +3,14 @@
     width: 70%;
     display: flex;
     align-items: center;
-    position: relative;
-    padding: 0.5rem 0rem;
+    position: fixed;
+    padding: 0.5rem 2rem 0.5rem 0;
     background-color: #fff;
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 9999;
-    margin: auto;
+    /* margin: auto; */
+    margin-left: 16%;
     border-radius: 25px;
     margin-top: 1em;
 }
@@ -18,10 +19,10 @@
     display: none;
 }
 
-.logo img {
+.logo-nav img {
     margin-left: 1rem;
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
     /* margin-right: 0.5rem; */
 }
 
@@ -36,7 +37,7 @@
 
 .navigation-menu li {
     list-style: none;
-    margin: 0 0.1rem;
+    margin: 0 0.5rem;
 }
 
 .navigation-menu li a {
@@ -65,28 +66,33 @@
     color: white;
 }
 
+/* .navigation-menu .login-li {
+    float: right;
+
+} */
+
 .nav-login {
+    background-color: #FF4363;
     text-decoration: none;
     text-align: center;
-    color: black;
-    margin-right: 1rem;
+    color: white;
+    /* margin-right: -2rem; */
     cursor: pointer;
     border: 0;
-    border-radius: 4px;
+    border-radius: 15px;
     font-weight: 600;
-    margin: 0 10px;
-    width: 150px;
-    padding: 10px 0;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    padding: 10px;
     transition: 0.4s;
+    font-size: 1.2rem;
+    /* padding: 10px; */
 }
 
 .nav-login:hover {
+    background-color: #ffca57;
     color: white;
     /* width:0; */
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
     /* background-color: rgba(104, 85, 224, 1); */
-    background-color: var(--red-insa);
 }
 
 .hamburger {
@@ -118,7 +124,7 @@
         display: flex;
         align-items: center;
         position: relative;
-        padding: 0.5rem 0rem;
+        padding: 0.5rem 2rem 0.5rem 0;
         background-color: #fff;
         color: black;
         box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
@@ -214,5 +220,27 @@
 
     .navigation-menu.expanded ul {
         display: block;
+    }
+
+    .navigation-menu li .login {
+        background-color: #FF4363;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 5px 0;
+        color: white;
+        width: 75%;
+        transition: 0.4s;
+    }
+
+    .navigation-menu li .login:hover {
+        background-color: #ffca57;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 5px 0;
+        color: white;
+        width: 75%;
+        box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
     }
 }

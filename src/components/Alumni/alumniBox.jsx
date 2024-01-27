@@ -3,14 +3,13 @@
 
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'react-bootstrap';
 import PropTypes from "prop-types";
-import "/src/assets/minh.jpg";
 
 
 export const AlumniBox = ({ name, major, promotion, image }) => {
     return (
         <>
             <Card className="alumni-box">
-                <CardImg variant="top" src={"/src/assets/minh.jpg"} style={{ width: "30%", height: "30%" }} />
+                <CardImg variant="top" src={image} style={{ width: "50%", height: "50%" }} />
                 <CardBody>
                     <CardTitle>{name}</CardTitle>
                     <CardSubtitle>{major}</CardSubtitle>
@@ -24,6 +23,6 @@ export const AlumniBox = ({ name, major, promotion, image }) => {
 AlumniBox.propTypes = {
     name: PropTypes.string.isRequired,
     major: PropTypes.string.isRequired,
-    promotion: PropTypes.string.isRequired,
+    promotion: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired
 };

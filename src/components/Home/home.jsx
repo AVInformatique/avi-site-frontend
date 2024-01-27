@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 import "./home.css";
-import "/src/assets/avi.svg";
-import "/src/assets/repas_noel_23.jpg"
+import aviLogo from "/src/assets/avi.svg";
+import repasNoel from "/src/assets/repas_noel_23.jpg";
 
 class Home extends Component {
     render() {
@@ -16,7 +16,7 @@ class Home extends Component {
             <div className="left-side">
                 <div className={"text-part"}>
                     {/* Logo here */}
-                    <img src="/src/assets/avi.svg" alt="AVI" style={{width: "50%", height: "50%"}}/>
+                    <img className={"logo-home"} src={aviLogo} alt="AVI"/>
                     {/* Header here */}
                     <h1 className={"header"}>Association des Vietnamiens à l'INSA</h1>
                     {/* Introduction here */}
@@ -24,6 +24,13 @@ class Home extends Component {
                         <p>
                             L'Association des Vietnamiens à l'INSA (AVI) est une association étudiante de l'INSA de Lyon.
                             Elle a pour but de promouvoir la culture vietnamienne au sein de l'école et de la faire découvrir aux autres étudiants.
+                        </p>
+                        <p>
+                            L'AVI organise des événements tout au long de l'année, comme des soirées, des sorties, des repas, des tournois sportifs, etc.
+                            Elle participe également à des événements organisés par d'autres associations.
+                        </p>
+                        <p>
+                            L'AVI est ouverte à tous les étudiants de l'INSA, vietnamiens ou non.
                         </p>
 
                         {/* More paragraphs here */}
@@ -42,10 +49,10 @@ class Home extends Component {
                     If the button is clicked, the page show the next 2 paragraphs
                     Button is hidden after clicked
                     */}
-                    <Button className={"button-more"} variant="outline-primary" size="sm" onClick={() => {
+                    {/* <Button className={"button-more"} variant="outline-primary" size="sm" onClick={() => {
                         document.getElementsByClassName("more")[0].style.display = "block";
                         document.getElementsByClassName("button-more")[0].style.display = "none";
-                    }}>More</Button>
+                    }}>More</Button> */}
                 </div>
             </div>
         );
@@ -53,7 +60,7 @@ class Home extends Component {
         // Right side
         const rightSide = (
             <div className="right-side">
-                <img src="/src/assets/repas_noel_23.jpg" alt="AVI" style={{width: "80%", height: "80%"}}/>
+                <img className="image-avi" src={repasNoel} alt="AVI"/>
             </div>
         );
 

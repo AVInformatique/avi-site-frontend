@@ -57,7 +57,7 @@ const Navbar = () => {
                         <li className={activePath === "/" ? "active" : ""}>
                             <a href="/">Home</a>
                         </li>
-                        <li className={activePath === "/events" ? "active" : ""}>
+                        <li className={activePath === "/event" ? "active" : ""}>
                             <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
@@ -107,7 +107,7 @@ const Navbar = () => {
                     <li className={activePath === "/" ? "active" : ""}>
                             <a href="/">Home</a>
                         </li>
-                        <li className={activePath === "/events" ? "active" : ""}>
+                        <li className={activePath === "/event" ? "active" : ""}>
                             <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>

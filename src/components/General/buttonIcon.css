@@ -1,0 +1,57 @@
+.button-icon {
+    height: 76px;
+    width: 76px;
+    position: relative;
+}
+
+.button-icon .overlap {
+    height: 92%;
+    width: 92%;
+    background-color: #ffba07;
+    border-radius: 15px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);  
+
+    transition: height 200ms ease-in, width 200ms ease-in,
+    background-color 200ms ease-in;
+}
+
+.button-icon .overlap { /* icon setting */
+    color: #ffffff;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 0;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-icon.red {
+    background-color: #ff4363; 
+}
+
+.button-icon.hover .overlap{
+    background-color: #ff4363; 
+    border-radius: 17px;
+    height: 100%;
+    width: 100%;
+}
+
+.button-icon.press .overlap{
+    background-color: #ff4363;
+}
+
+.button-icon.red.hover .overlap, 
+.button-icon.red.press .overlap
+{
+    background-color: #ffba07;
+}
+

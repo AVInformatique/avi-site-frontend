@@ -1,0 +1,133 @@
+.event-box-large {
+    height: 413px;
+    width: 1200px;
+    position: relative;
+    display: flex;
+
+}
+
+.event-box-large .left-part {
+    width: 41.666667%;
+    height: 100%;
+    position: relative;
+
+    transition: width 200ms ease-in;
+}
+
+.event-box-large .right-part {
+    height: 100%;
+    width: 58.333333%;
+    background-color: #ff4363;
+    border-radius: 0 30px 30px 0;
+    position: relative;
+
+    transition: background-color 200ms ease-in, width 200ms ease-in;
+}
+
+.event-box-large .event-img {
+    width: 100%;
+    height: 100%;
+    background-color: #1f2f54;
+    border-radius: 30px 0 0 30px;
+}
+
+.event-box-large .date-month {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    position: absolute;
+    top: 31px;
+    left: 40px;
+    width: 111px;
+    height: 111px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+.event-box-large .date-month .day {
+    font-family: "Manrope-SemiBold", Helvetica;
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+
+    top: 6px;
+    color: #000;
+    width: 100%;;
+    text-align: center;
+}
+
+.event-box-large .date-month .mon {
+    color: #ff4363;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+}
+
+.event-box-large .right-part .info {
+    position: relative;
+    left: 60px;
+    top: 50px;
+
+    width: 560px;
+    background-color: #000;
+}
+  
+  
+.event-box-large .right-part .date{
+    color: #ffffff;
+    font-family: "Manrope-Medium", Helvetica;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0;
+    position: absolute;
+    top: 0;
+}
+
+.event-box-large .right-part .name {
+    color: #ffffff;
+    font-family: "Manrope-SemiBold", Helvetica;
+    font-size: 45px;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 0;
+    position: absolute;
+    top: 47px;
+    left: -2px;
+  }
+  
+.event-box-large .right-part .description {
+    color: #ffffff;
+    font-family: "Manrope-Medium", Helvetica;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: justify;
+    margin: 0;
+    position: absolute;  
+    top: 110px;
+}
+
+.event-box-large .right-part .button-inside {
+    position: absolute !important;
+    bottom: 50px;
+    left: 50px;
+}
+
+.event-box-large.hover .left-part {
+    width: 42.5%;
+}
+
+.event-box-large.hover .right-part {
+    background-color: #ffba07;
+    width: 57.5%;
+}
+
+.event-box-large.press .right-part {
+    background-color: #ffba07;
+}
+  

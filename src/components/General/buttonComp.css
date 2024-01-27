@@ -1,0 +1,82 @@
+.button {
+    height: 75px;
+    width: 310px;
+    position: relative;
+}
+
+.button .overlap {
+    height: 97%;
+    width: 97%;
+    background-color: #ffba07;
+    border-radius: 15px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);  
+
+    transition: height 200ms ease-in, width 200ms ease-in,
+    background-color 200ms ease-in;
+}
+
+.button .text {
+    color: #ffffff;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 0;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    transition: font-size 200ms ease-in;
+}
+ 
+.button.medium {
+    height: 30px;
+    width: 210px;
+}
+
+.button.small {
+    height: 60px;
+    width: 150px;
+}
+
+.button.medium .text{
+    font-size: 28px;
+}
+
+.button.small .text{
+    font-size: 25px;
+}
+
+.button.red {
+    background-color: #ff4363; 
+}
+
+.button.hover .overlap{
+    background-color: #ff4363; 
+    border-radius: 17px;
+    height: 100%;
+    width: 100%;
+}
+  
+.button.hover .text {
+    font-size: 34px;
+}
+
+.button.press .overlap{
+    background-color: #ff4363;
+}
+
+.button.red.hover .overlap, 
+.button.red.press .overlap
+{
+    background-color: #ffba07;
+}
+

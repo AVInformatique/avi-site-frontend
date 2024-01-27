@@ -16,6 +16,7 @@ class Alumnis extends Component {
         this.setState({ alumnis: data });
     })
         .catch((error) => console.log(error));
+        
   }
 
   render() {

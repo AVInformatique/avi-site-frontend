@@ -23,31 +23,6 @@ function getEvents() {
     });
 }
 
-function getEventsByTime(month = '', year = '') {
-    const eventRef = collection(db, 'events');
-    const q = query(eventRef);
-
-    month = (month.length === 1) ? '0' + month : month;
-    return new Promise((resolve, reject) => {
-        getDocs(q)
-            .then((snapshot) => {
-                let events = [];
-                snapshot.forEach((doc) => {
-                    let eventData = doc.data();
-                    if ( eventData.date.includes(month + '/', 3) &&
-                         eventData.date.includes('/' + year)
-                    ) {
-                        events.push(doc.data());
-                    }
-                });
-                resolve(events);
-            })
-            .catch((err) => {
-                reject(err);
-            });
-    });
-}
-
 function getUpcomingEvents() {
     const eventRef = collection(db, 'events');
     const currentTime = new Date().getTime();
@@ -66,7 +41,7 @@ function getUpcomingEvents() {
                 });
 
                 // Sort events by date in descending order
-                upcomingEvents.sort((a, b) => new Date(b.date) - new Date(a.date));
+                upcomingEvents.sort((a, b) => a.Date - b.Date);
                 resolve(upcomingEvents);
             })
             .catch((err) => {
@@ -145,6 +120,5 @@ export {
     getEventById,
     updateEventById,
     deleteEventById,
-    getEventsByTime,
     getUpcomingEvents
 };

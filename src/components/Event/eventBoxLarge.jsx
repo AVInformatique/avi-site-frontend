@@ -1,45 +1,42 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { useState } from 'react';
-import { buttonLargeYellow } from '/src/components/General/buttonLargeYellow';
+import { ButtonComp } from '/src/components/General/buttonComp';
 import './eventBoxLarge.css';
 
 export const EventBoxLarge = ({ event }) => {
     const [state, dispatch] = useState('default');
+    console.log(event.date);
+    const date = event.date ? event.date.toDate() : new Date("1/1/2003");
 
     return (
         <div className={`event-box-large ${state}`}
              onMouseEnter={() => { dispatch('hover'); }}
-             onMouseLeave={() => { dispatch('press'); }}
+             onMouseLeave={() => { dispatch('default'); }}
+             onMouseDown={() => {dispatch('press');}}
+             onMouseUp={() => {dispatch('hover');}}
         >
-                    <div className="overlap-group-2">
-                        <div className="IMAGE-OF-EVENTS"> X </div>
-                    </div>
-                    <div className="DD-MON-wrapper">
-                        <p className="DD-MON">
-                            <span className="span">
-                                DD
-                                <br />
-                            </span>
-                            <span className="text-wrapper-5">
-                                MON
-                            </span>
-                        </p>
-                    </div>
-                    <div className="overlap">
-                        <p className="name">{event.name}</p>
-                        <p className="date">{event.date}</p>
-                    </div>
-                    <div className="overlap-group">
-                        <p className="description">{event.description}</p>
-                        <buttonLargeYellow
-                            className="instance-node"
-                            divClassName="button-large-yellow"
-                            overlapGroupClassName="button-large-yellow-instance"
-                            property1="hover"
-                            text="Learn more"
-                        />
-                    </div>
+            <div className="left-part">
+                <div className="event-img"> </div>
+                <div className="date-month">
+                    <span className="day">DD</span>
+                    <span className="mon">MON</span>
+                </div>
             </div>
+            <div className="right-part">
+                <div className="info">
+                    <p className="date">{date.toUTCString()}</p>
+                    <p className="name">{event.name}</p>
+                    <p className="description">{event.description}</p>
+                </div>
+
+                <ButtonComp
+                    divClassName="button-inside"
+                    color='yellow'
+                    size='large'
+                    text="Learn more"
+                    stateParrent = {state}
+                />
+            </div>
+        </div>
     );
 };

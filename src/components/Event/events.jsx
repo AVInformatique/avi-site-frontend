@@ -1,31 +1,32 @@
 import { useState, useEffect, Fragment } from 'react';
-import '/src/grid.css';
-import { getUpcomingEvents } from '../../services/eventService';
+import { getEvents, getUpcomingEvents } from '../../services/eventService';
 
 // component for displaying events
-import {WelcomeEvent} from './WelcomeEvent'
+import WelcomeEvent from './sections/WelcomeEvent'
+import ShowEvent from './sections/ShowEvent'
 
 const Events = () => {
-    const [UpcomingEvents, setUpcomingEvents] = useState([]);
+    const [UpcomingEvents, setUpcomingEvents] = useState([{}]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const events = await getUpcomingEvents();
+                const events = await getEvents();
                 setUpcomingEvents(events);
             } catch (error) {
                 console.error('Error fetching events:', error);
             }
         };
-
         fetchData();
+        console.log(UpcomingEvents);
     }, []);
+    console.log(UpcomingEvents);
 
     return (
-        <div className="container grid wide">
-            Hello
+        <Fragment>
             <WelcomeEvent event={UpcomingEvents[0]}></WelcomeEvent>
-        </div>
+            <ShowEvent></ShowEvent>
+        </Fragment>
     );
 };
 

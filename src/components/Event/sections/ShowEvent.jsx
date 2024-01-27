@@ -6,6 +6,7 @@ import { getEvents } from '/src/services/eventService.js';
 
 import {DropDown} from '/src/components/General/dropDown'
 import {ButtonIcon} from '/src/components/General/buttonIcon'
+import {SearchBox} from '/src/components/General/searchBox'
 
 import { IoMdSearch } from "react-icons/io";
 
@@ -14,22 +15,22 @@ const ShowEvent = () => {
     const [events, setEvents] = useState([{}]);
     const [monthFilter, setMonth] = useState("*");
     const [yearFilter, setYear] = useState("*");
+    const [slug, setSlug] = useState("");
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (monthFilter === "*" && monthFilter === "*") {
-                    const events = await getEvents();
-                    setEvents(events);
-                } else {
-                    console.log(monthFilter, yearFilter)
-                }
-            } catch (error) {
-                console.error('Error fetching events:', error);
+    async function fetchData() {
+        try {
+            if (monthFilter === "*" && monthFilter === "*" && slug === "") {
+                const events = await getEvents();
+                setEvents(events);
+            } else {
+                console.log(monthFilter, yearFilter, slug)
             }
-        };
-        fetchData();
-    }, [monthFilter, yearFilter]);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        }
+    };
+
+    useEffect(() => {fetchData()}, []);
     
     const title_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -41,12 +42,12 @@ const ShowEvent = () => {
     }
 
     return (
-        <div className="welcome-event section grid wide">
+        <div className="show-event section grid wide">
             <div className="row head">
                 <div className="col l-12">
-                    <h4 className="">Discovers</h4>
+                    <h4 className="intro">Discovers</h4>
                     <h2 className='title'>AVI Events</h2>
-                    <span className='description'>{title_description}</span>
+                    <span className='intro-description'>{title_description}</span>
                 </div>
             </div>
 
@@ -71,7 +72,12 @@ const ShowEvent = () => {
                     />
                 </div>
                 <div className="col l-7">
-                    <div className="search-bar"></div>
+                    <SearchBox
+                        callback = {()=>{fetchData()}}
+                        usedAsFrom = {false}
+                        text = 'Looking for some events?'
+                        sendInputValue = {setSlug}
+                    ></SearchBox>
                 </div>
             </div>
         </div>

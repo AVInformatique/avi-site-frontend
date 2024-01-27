@@ -1,0 +1,30 @@
+.search-box  {
+    height: 74px;
+    border-radius: 15px;
+    background-color: #fff;
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    border: 2px solid #FF738B;
+}
+
+.search-box  .icon{
+    font-size: 30px;
+    color:#1F2F54;
+    line-height: 74px;
+    padding-left: 10px;
+}
+
+.search-box  .input-field {
+    color: #625757;
+    flex-grow: 1;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+}
+
+.search-box  .input-field:focus{
+    outline: none;
+}

@@ -2,6 +2,8 @@
     height: 75px;
     width: 310px;
     position: relative;
+    border: none;
+    background-color: transparent;
 }
 
 .button .overlap {
@@ -49,13 +51,15 @@
 
 .button.medium .text{
     font-size: 28px;
+    font-weight: 600;
 }
 
 .button.small .text{
     font-size: 25px;
+    font-weight: 500;
 }
 
-.button.red {
+.button.red .overlap{
     background-color: #ff4363; 
 }
 

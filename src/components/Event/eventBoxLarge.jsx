@@ -5,7 +5,6 @@ import './eventBoxLarge.css';
 
 export const EventBoxLarge = ({ event }) => {
     const [state, dispatch] = useState('default');
-    console.log(event.date);
     const date = event.date ? event.date.toDate() : new Date("1/1/2003");
 
     return (

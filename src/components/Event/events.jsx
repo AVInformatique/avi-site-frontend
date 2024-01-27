@@ -18,9 +18,7 @@ const Events = () => {
             }
         };
         fetchData();
-        console.log(UpcomingEvents);
     }, []);
-    console.log(UpcomingEvents);
 
     return (
         <Fragment>

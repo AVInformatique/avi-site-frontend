@@ -50,12 +50,12 @@
 }
 
 .button.medium .text{
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 600;
 }
 
 .button.small .text{
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 500;
 }
 
@@ -72,6 +72,17 @@
   
 .button.hover .text {
     font-size: 34px;
+}
+
+.button.medium.hover .text
+{
+    font-size: 30px;
+}
+
+.button.small.hover .text
+{
+    font-size: 26px;
+    font-weight: 500;
 }
 
 .button.press .overlap{

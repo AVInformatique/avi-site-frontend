@@ -1,21 +1,24 @@
 import { useState, useEffect, Fragment } from 'react';
+import { useSearchParams } from 'react-router-dom'
 import '/src/grid.css';
 import './ShowEvent.css';
 
 import { getEvents } from '/src/services/eventService.js';
 
-import {DropDown} from '/src/components/General/dropDown'
-import {ButtonIcon} from '/src/components/General/buttonIcon'
-import {SearchBox} from '/src/components/General/searchBox'
+import { DropDown } from '/src/components/General/dropDown'
+import { ButtonIcon } from '/src/components/General/buttonIcon'
+import { SearchBox } from '/src/components/General/searchBox'
+import { EventBoxMedium } from '../eventBoxMedium'
 
 import { IoMdSearch } from "react-icons/io";
 
 const ShowEvent = () => {
 
     const [events, setEvents] = useState([{}]);
+    const [searchParams, setSearchParams] = useSearchParams()
     const [monthFilter, setMonth] = useState("*");
     const [yearFilter, setYear] = useState("*");
-    const [slug, setSlug] = useState("");
+    const [slug, setSlug] = useState(searchParams.get('search') || "");
 
     async function fetchData() {
         try {
@@ -23,6 +26,8 @@ const ShowEvent = () => {
                 const events = await getEvents();
                 setEvents(events);
             } else {
+                searchParams.set('search', slug);
+                setSearchParams(searchParams);
                 console.log(monthFilter, yearFilter, slug)
             }
         } catch (error) {
@@ -30,7 +35,12 @@ const ShowEvent = () => {
         }
     };
 
-    useEffect(() => {fetchData()}, []);
+    useEffect(() => { 
+        fetchData();
+        if (searchParams.get('search')) {
+            window.scrollTo(0, 800);
+        }
+    }, []);
     
     const title_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -75,10 +85,22 @@ const ShowEvent = () => {
                     <SearchBox
                         callback = {()=>{fetchData()}}
                         usedAsFrom = {false}
-                        text = 'Looking for some events?'
+                        text = {slug || 'Looking for some events?'}
                         sendInputValue = {setSlug}
                     ></SearchBox>
                 </div>
+            </div>
+
+            <div className="event-list row">
+                {events.map((event, index) => 
+                        (<div key={index} className="col l-4">
+                            <EventBoxMedium 
+                                event = {event}
+                                divClassName="event-box-medium"
+                            ></EventBoxMedium>
+                        </div>)
+                    )}
+
             </div>
         </div>
     );

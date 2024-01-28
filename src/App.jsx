@@ -12,6 +12,7 @@ import Alumni from "/src/pages/alumnis";
 import NotFound from "/src/pages/notfound";
 import Guide from "/src/pages/guide";
 import Events from "/src/pages/events";
+import EventId from "/src/pages/eventId"
 import SignInPage from "/src/pages/signin";
 import AdminPage from "/src/pages/admin";
 
@@ -34,6 +35,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/events" element={<Events />} />
+                <Route path="/events/:id" element={<EventId />} />
                 <Route path="/alumni" element={<Alumni />} />
                 <Route path="/guide" element={<Guide />} />
                 <Route path="/signin" element={<SignInPage />} />

@@ -61,11 +61,11 @@
 
 .event-box-large .date-month .mon {
     color: #ff4363;
-    font-size: 30px;
+    font-size: 35px;
     width: 100%;
     text-align: center;
     position: absolute;
-    bottom: 10px;
+    bottom: 8px;
 }
 
 .event-box-large .right-part .info {

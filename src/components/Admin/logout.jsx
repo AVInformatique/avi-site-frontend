@@ -1,29 +1,19 @@
-import {Component} from "react";
+import {useNavigate} from "react-router-dom";
 
 import {logout} from "/src/services/authService";
 
 
-class LogOut extends Component {
+const LogOut = () => {
+    const navigate = useNavigate();
 
-    onButtonClick = () => {
-        logout()
-            .then(() => {
-                console.log("Logout successful");
-            })
-            .catch((error) => {
-                console.log("Logout failed", error);
-            });
-        window.location.href = "/signin";
+    const handleLogout = () => {
+        logout();
+        navigate("/signin");
     }
 
-    render() {
-        return (
-            <div>
-                {/* Add "logout" button here */}
-                <button onClick={this.onButtonClick}>Logout</button>
-            </div>
-        );
-    }
+    return (
+        <button onClick={handleLogout}>Log Out</button>
+    )
 }
 
 export default LogOut;

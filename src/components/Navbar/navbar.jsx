@@ -119,12 +119,6 @@ const Navbar = () => {
                         <li>
                             <a href="/signin" className="login">Login</a>
                         </li>
-                        <li className={activePath === "/alumni" ? "active" : ""}>
-                            <a href="/alumni">Alumnis</a>
-                        </li>
-                        <li className={activePath === "/guide" ? "active" : ""}>
-                            <a href="/guide">Guide & Tutor</a>
-                        </li>
                         {/* <li>
                             <a href="/log-in">Login</a>
                         </li> */}

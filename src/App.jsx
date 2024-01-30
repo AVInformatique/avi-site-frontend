@@ -23,7 +23,7 @@ function App() {
         <Fragment>
             {
                 (location.pathname === "/" ||
-                location.pathname === "/events" ||
+                location.pathname.includes("/events") ||
                 location.pathname === "/alumni" ||
                 location.pathname === "/guide" ||
                 location.pathname === "/signin" ||

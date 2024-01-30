@@ -11,7 +11,7 @@ const Events = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const events = await getEvents();
+                const events = await getUpcomingEvents();
                 setUpcomingEvents(events);
             } catch (error) {
                 console.error('Error fetching events:', error);

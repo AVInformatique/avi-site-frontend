@@ -17,8 +17,10 @@ export const DropDown = ({ listItems = [], callback = ()=>{},
 
     const handleClickMenuItem = (event) => {
         openCloseMenu(!isOpenMenu);
-        callback(event.currentTarget.getAttribute('data'));
-        changeIndex(event.currentTarget.getAttribute('data-index'));
+        let index = event.currentTarget.getAttribute('data-index');
+        let data = event.currentTarget.getAttribute('data')
+        callback(data, index);
+        changeIndex(index);
     }
 
     return (

@@ -23,7 +23,7 @@ export const EventBoxLarge = ({ event }) => {
                 )}
                 </div>
                 <div className="date-month">
-                    <span className="day">{`${(date.getDate() < 10) && '0'}${date.getDate()}`}</span>
+                    <span className="day">{`${(date.getDate() < 10) ? '0' : ''}${date.getDate()}`}</span>
                     <span className="mon">{monthString[date.getMonth()]}</span>
                 </div>
             </div>

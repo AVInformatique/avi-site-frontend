@@ -61,10 +61,10 @@ class Alumnis extends Component {
         );
 
         const alumniList = (
-            <div className="row">
+            <div className="row-alumni">
                 <div className="big-box">
                     {this.state.alumnis.map((alumni) => (
-                        <div className="column" key={alumni.id}>
+                        <div className="column-alumni" key={alumni.id}>
                             <AlumniBox name={alumni.name} major={alumni.major} promotion={alumni.promotion} image={alumni.image} />
                         </div>
                     ))}

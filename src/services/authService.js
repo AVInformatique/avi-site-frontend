@@ -1,6 +1,7 @@
-import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
-
-const auth = getAuth();
+import {signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut} from "firebase/auth";
+import {auth} from "/src/config/firebaseConfig";
 
 export const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -23,7 +24,6 @@ export const login = (email, password) => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
             // ...
         })
         .catch((error) => {
@@ -34,5 +34,10 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
-    return auth.signOut();
+    // sign out
+    signOut(auth);
+}
+
+export const getCurrentUser = () => {
+    return auth.currentUser;
 }

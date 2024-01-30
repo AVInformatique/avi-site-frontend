@@ -1,6 +1,6 @@
-import React from 'react';
 import { useState } from 'react';
 import './buttonComp.css';
+import PropTypes from "prop-types";
 
 export const ButtonComp = ({ stateParrent, callback = () => {}, isUsedSubmit = false, href = '',
                             size = 'large', color = 'yellow', text = 'Text', divClassName='' }) => {
@@ -26,4 +26,12 @@ export const ButtonComp = ({ stateParrent, callback = () => {}, isUsedSubmit = f
             } 
         </button>
     );
+};
+
+ButtonComp.propTypes = {
+    stateParrent: PropTypes.string,
+    size: PropTypes.string,
+    color: PropTypes.string,
+    text: PropTypes.string,
+    divClassName: PropTypes.string,
 };

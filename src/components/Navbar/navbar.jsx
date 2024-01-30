@@ -128,6 +128,7 @@ const Navbar = () => {
                         <li className={activePath === "/guide" ? "active" : ""}>
                             <a href="/guide">Guide & Tutor</a>
                         </li>
+
                         {/* If user is null, redirect to sign-in page.
                         Or else, redirect to admin page */}
                         { user ? (

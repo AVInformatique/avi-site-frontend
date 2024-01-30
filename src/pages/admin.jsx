@@ -1,31 +1,40 @@
-import {useState, useEffect} from "react";
-import {getCurrentUser} from "/src/services/authService.js";
+import { useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import { logout } from "/src/services/authService.js";
+import { auth } from "/src/config/firebaseConfig.js";
 
 // Components
 import Admin from "/src/components/Admin/admin";
-import LogOut from "/src/components/Admin/logout";
 
 
 const AdminPage = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const user = getCurrentUser();
-        setUser(user);
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
+        });
+
+        return unsubscribe;
     }, []);
+
+    const handleSignOut = async () => {
+        await logout();
+        navigate("/signin");
+    };
 
     return (
         <div>
             {user ? (
-                <div>
-                    <Admin />
-                    <LogOut />
-                </div>
+                <>
+                    <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p>
+
+                    <Admin currentUser={user} />
+                </>
             ) : (
-                <div>
-                    <h1>Access Denied</h1>
-                </div>
-            )}
+                <p>Please sign in.</p>
+        )}
         </div>
     );
 }

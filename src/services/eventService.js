@@ -72,7 +72,14 @@ function getEventsByYear(year) {
     });
 }
 
-function addEvent(event) {
+function addEvent(user, event) {
+    // Check if user is logged in
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation error: User is not logged in');
+        });
+    }
+
     if (!event.name || !event.date) {
         return new Promise((resolve, reject) => {
             reject('Name and date are required');
@@ -106,7 +113,14 @@ function getEventById(id) {
     });
 }
 
-function updateEventById(id, event) {
+function updateEventById(user, id, event) {
+    // Check if user is logged in
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation error: User is not logged in');
+        });
+    }
+
     const eventRef = collection(db, 'events');
     return new Promise((resolve, reject) => {
         eventRef
@@ -121,7 +135,14 @@ function updateEventById(id, event) {
     });
 }
 
-function deleteEventById(id) {
+function deleteEventById(user, id) {
+    // Check if user is logged in
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation error: User is not logged in');
+        });
+    }
+
     const eventRef = collection(db, 'events');
     return new Promise((resolve, reject) => {
         eventRef

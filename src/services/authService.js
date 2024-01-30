@@ -1,8 +1,7 @@
-import {getAuth, signInWithEmailAndPassword,
-    createUserWithEmailAndPassword, onAuthStateChanged,
+import {signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     signOut} from "firebase/auth";
-
-const auth = getAuth();
+import {auth} from "/src/config/firebaseConfig";
 
 export const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -25,7 +24,6 @@ export const login = (email, password) => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
             // ...
         })
         .catch((error) => {

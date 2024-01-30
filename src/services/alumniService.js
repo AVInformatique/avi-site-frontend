@@ -1,4 +1,6 @@
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore';
+import { doc, collection, getDocs,
+    query, orderBy, where, deleteDoc,
+    addDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 
 function getAlumnis() {
@@ -45,18 +47,32 @@ function getAlumnisByPromotion(promo) {
     });
 }
 
-function addAlumni(alumni) {
+function addAlumni(user, alumni) {
+    // Validation: user is required
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: user is required');
+        });
+    }
+
     // Validation: name is required
     if (!alumni.name) {
         return new Promise((resolve, reject) => {
             reject('Validation failed: name is required');
         });
     }
-    const alumniRef = collection(db, 'alumnis');
+    // Validation: promotion must be a number
+    if (alumni.promotion && isNaN(alumni.promotion)) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: promotion must be a number');
+        });
+    }
+
     return new Promise((resolve, reject) => {
-        alumniRef.add(alumni)
-            .then(docRef => {
-                resolve(docRef.id);
+        addDoc(collection(db, 'alumnis'), alumni)
+            .then(() => {
+                resolve();
+                console.log('Document successfully added!');
             })
             .catch(err => {
                 reject(err);
@@ -77,7 +93,14 @@ function getAlumniById(id) {
     });
 }
 
-function updateAlumniById(id, alumni) {
+function updateAlumniById(user, id, alumni) {
+    // Validation: user is required
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: user is required');
+        });
+    }
+
     const alumniRef = collection(db, 'alumnis');
     return new Promise((resolve, reject) => {
         alumniRef.doc(id).update(alumni)
@@ -90,12 +113,19 @@ function updateAlumniById(id, alumni) {
     });
 }
 
-function deleteAlumniById(id) {
-    const alumniRef = collection(db, 'alumnis');
+function deleteAlumniById(user, id) {
+    // Validation: user is required
+    if (!user) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: user is required');
+        });
+    }
+
     return new Promise((resolve, reject) => {
-        alumniRef.doc(id).delete()
+        deleteDoc(doc(db, 'alumnis', id))
             .then(() => {
                 resolve();
+                console.log('Document successfully deleted!');
             })
             .catch(err => {
                 reject(err);

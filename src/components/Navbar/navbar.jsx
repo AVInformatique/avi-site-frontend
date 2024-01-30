@@ -1,11 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
 import "./navbar.css";
+import { auth } from "/src/config/firebaseConfig.js";
 import aviLogo from "/src/assets/avi.svg";
 
 const Navbar = () => {
+    const [user, setUser] = useState(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const [activePath, setActivePath] = useState("/");
-    // console.log(window.location.pathname);
 
     useEffect(() => {
         const currentPath = window.location.pathname;
@@ -20,6 +21,14 @@ const Navbar = () => {
         return () => {
             window.removeEventListener("pathchange", handleNavigation);
         };
+    }, []);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
+        });
+
+        return unsubscribe;
     }, []);
 
     return (
@@ -66,12 +75,15 @@ const Navbar = () => {
                         <li className={activePath === "/guide" ? "active" : ""}>
                             <a href="/guide">Guide & Tutor</a>
                         </li>
-                        {/* <li className="login-li">
-                            <a href="/log-in" className="nav-login">Sign in</a>
-                        </li> */}
                     </ul>
                 </div>
-                <a href="/signin" className="nav-login">Login</a>
+                {/* If user is null, redirect to sign-in page.
+                Or else, redirect to admin page */}
+                { user ? (
+                    <a href="/admin" className="nav-login">Admin</a>
+                ) : (
+                    <a href="/signin" className="nav-login">Login</a>
+                )}
             </nav>
 
             <nav className="navigation tel-view">
@@ -116,22 +128,19 @@ const Navbar = () => {
                         <li className={activePath === "/guide" ? "active" : ""}>
                             <a href="/guide">Guide & Tutor</a>
                         </li>
-                        <li>
-                            <a href="/signin" className="login">Login</a>
-                        </li>
-                        <li className={activePath === "/alumni" ? "active" : ""}>
-                            <a href="/alumni">Alumnis</a>
-                        </li>
-                        <li className={activePath === "/guide" ? "active" : ""}>
-                            <a href="/guide">Guide & Tutor</a>
-                        </li>
-                        {/* <li>
-                            <a href="/log-in">Login</a>
-                        </li> */}
+                        {/* If user is null, redirect to sign-in page.
+                        Or else, redirect to admin page */}
+                        { user ? (
+                            <li>
+                                <a href="/admin" className="login">Admin</a>
+                            </li>
+                        ) : (
+                            <li>
+                                <a href="/signin" className="login">Login</a>
+                            </li>
+                        )}
                     </ul>
                 </div>
-
-                {/* <a href="/log-in" className="nav-login">Login</a> */}
             </nav>
         </Fragment>
     );

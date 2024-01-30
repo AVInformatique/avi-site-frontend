@@ -21,10 +21,10 @@
 
 .header-alumni .searchBar {
     height: 50px;
-    width: 50%;
+    width: 40%;
     display: flex;
-    gap: 15px;
     align-items: center;
+    justify-content: center;
     padding: 0.7rem 1.2rem 0.7rem 1.2rem;
     background-color: #fff;
     color: black;
@@ -44,7 +44,7 @@
 }
 
 .header-alumni .searchBar label {
-    text-align: right;
+    text-align: center;
     font-size: 25px;
     font-weight: bold;
     width: 40%;
@@ -59,28 +59,6 @@
     height: 100%;
     font-size: 20px;
 }
-
-.header-alumni .searchBar button {
-    cursor: pointer;
-    background-color: #FF4363;
-    border-radius: 15px;
-    border: none;
-    width: 40%;
-    height: 100%;
-    font-size: 20px;
-    padding-left: 10px;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-}
-
-.header-alumni .searchBar button:hover {
-    background-color: #ffca57;
-    color: white;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-}
-
-
 
 .big-box {
     display: flex;
@@ -98,17 +76,17 @@
 Each row contains 3 alumni boxes 
 If a row contains less than 3 boxes, the boxes will stack horizontally
 */
-.row {
+.row-alumni {
     /* display: flex;
     flex-direction: row;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 10px; */
+    /* flex-wrap: wrap;
     margin: 10px 10%; */
     padding: 0 4px;
     justify-content: center;
 }
 
-.column {
+.column-alumni {
     width: 32.6%;
     /* padding: 0 4px; */
     margin-bottom: 10px;

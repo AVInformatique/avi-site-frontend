@@ -10,7 +10,7 @@ export const EventBoxMedium = ({ event = {}, divClassName }) => {
 
     return (
         <a className={`event-box-medium ${state} ${divClassName}`}
-            href={`/events/${event.id}`}
+            href={`/event/${event.id}`}
              onMouseEnter={() => { dispatch('hover'); }}
              onMouseLeave={() => { dispatch('default'); }}
              onMouseDown={() => {dispatch('press');}}

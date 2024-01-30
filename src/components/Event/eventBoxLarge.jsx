@@ -10,7 +10,7 @@ export const EventBoxLarge = ({ event }) => {
 
     return (
         <a className={`event-box-large ${state}`}
-            href={`/events/${event.id}`}
+            href={`/event/${event.id}`}
              onMouseEnter={() => { dispatch('hover'); }}
              onMouseLeave={() => { dispatch('default'); }}
              onMouseDown={() => {dispatch('press');}}

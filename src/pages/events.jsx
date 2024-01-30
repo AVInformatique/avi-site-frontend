@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Event from '/src/components/Event/events';
 
-const Events = () => {
+const EventPage = () => {
     return (
         <Fragment>
             <Event />
@@ -9,4 +9,4 @@ const Events = () => {
     );
 };
 
-export default Events;
+export default EventPage;

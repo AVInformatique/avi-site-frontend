@@ -23,7 +23,10 @@ class Alumnis extends Component {
     }
 
     handlePromoChange = (event) => {
-        this.setState({ chosenPromo: event.target.value });
+        event.preventDefault();
+        const promo = event.target.value;
+        this.setState({ chosenPromo: promo });
+        this.handleAlumniList(promo);
     }
 
     handleAlumniList = (year) => {
@@ -38,10 +41,6 @@ class Alumnis extends Component {
         this.handleAlumniList(this.state.chosenPromo)
     }
 
-    findAlumnis = () => {
-        this.handleAlumniList(this.state.chosenPromo);
-    }
-
     render() {
         const header = (
             <div className="header-alumni">
@@ -52,14 +51,11 @@ class Alumnis extends Component {
                 </div>
                 <div className="searchBar">
                     <label htmlFor="promotion">Promotion year</label>
-                    {/* <input type="text" placeholder="Search name.." name="search"/> */}
                     <select id="promotion" name="promotion" value={this.state.chosenPromo} onChange={this.handlePromoChange}>
                         {this.state.promotionYears.map((year) => (
                             <option key={year} value={year}>{year}</option>
                         ))}
                     </select>
-                    {/* <button type="submit"><i className="fa fa-search"></i></button> */}
-                    <button type="submit" onClick={this.findAlumnis}>Find</button>
                 </div>
             </div>
         );

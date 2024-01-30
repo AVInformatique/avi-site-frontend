@@ -1,5 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
+import { doc, getDoc } from "firebase/firestore"; // Add this import statement
 
 function getEvents() {
     const eventRef = collection(db, 'events');
@@ -25,23 +26,21 @@ function getEvents() {
 
 function getUpcomingEvents() {
     const eventRef = collection(db, 'events');
-    const currentTime = new Date().getTime();
-
+    const currentTime = new Date(); 
+    const q = query(eventRef, where("date", ">=", currentTime));
     return new Promise((resolve, reject) => {
-        getDocs(eventRef)
+        getDocs(q)
             .then((querySnapshot) => {
                 const upcomingEvents = [];
                 querySnapshot.forEach((doc) => {
-                    const eventData = doc.data();
-                    const eventTime = new Date(eventData.date).getTime();
-
-                    if (eventTime > currentTime) {
-                        upcomingEvents.push(eventData);
-                    }
+                    const event = {
+                        id: doc.id,
+                        ...doc.data(),
+                    };
+                    upcomingEvents.push(event);
                 });
-
                 // Sort events by date in descending order
-                upcomingEvents.sort((a, b) => a.Date - b.Date);
+                upcomingEvents.sort((a, b) => a.date - b.date);
                 resolve(upcomingEvents);
             })
             .catch((err) => {
@@ -67,6 +66,41 @@ function getEventsByYear(year) {
                 resolve(events);
             })
             .catch(err => {
+                reject(err);
+            });
+    });
+}
+
+function getEventsByTimeAndName(month, year, name) {
+    const eventRef = collection(db, 'events');
+    const q = query(eventRef);
+    return new Promise((resolve, reject) => {
+        getDocs(q)
+            .then((querySnapshot) => {
+                const events = [];
+                querySnapshot.forEach((doc) => {
+                    const event = {
+                        id: doc.id,
+                        ...doc.data(),
+                    };
+                    
+                    const dateE = event.date.toDate() ;
+                    const monthE = dateE.getMonth();
+                    const yearE = dateE.getFullYear();
+                    const nameE = event.name.trim().toLowerCase().normalize('NFKD');
+                    const findingName = name.trim().toLowerCase().normalize('NFKD');
+                    
+                    if (nameE.includes(name) &&
+                        ( (month == "*") || (parseInt(month) == (monthE+1)) ) &&
+                        ( (year == "*")  || (parseInt(year) == yearE)   )) {
+                            events.push(event);
+                        }
+                });
+                // Sort events by date in descending order
+                events.sort((a, b) => - a.date + b.date);
+                resolve(events);
+            })
+            .catch((err) => {
                 reject(err);
             });
     });
@@ -99,11 +133,9 @@ function addEvent(user, event) {
 }
 
 function getEventById(id) {
-    const eventRef = collection(db, 'events');
+    const eventRef = doc(db, 'events', id); // Update this line
     return new Promise((resolve, reject) => {
-        eventRef
-            .doc(id)
-            .get()
+        getDoc(eventRef) // Update this line
             .then((doc) => {
                 resolve(doc.data());
             })
@@ -164,5 +196,6 @@ export {
     getEventById,
     updateEventById,
     deleteEventById,
-    getUpcomingEvents
+    getUpcomingEvents,
+    getEventsByTimeAndName
 };

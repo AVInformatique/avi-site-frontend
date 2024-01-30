@@ -11,9 +11,10 @@ import HomePage from "/src/pages/home";
 import Alumni from "/src/pages/alumnis";
 import NotFound from "/src/pages/notfound";
 import Guide from "/src/pages/guide";
+import EventPage from "/src/pages/events";
+import EventIdPage from "/src/pages/eventId"
 import SignInPage from "/src/pages/signin";
 import AdminPage from "/src/pages/admin";
-import EventPage from "/src/pages/events";
 
 function App() {
     const location = useLocation();
@@ -22,7 +23,7 @@ function App() {
         <Fragment>
             {
                 (location.pathname === "/" ||
-                location.pathname === "/event" ||
+                location.pathname.includes("/event") ||
                 location.pathname === "/alumni" ||
                 location.pathname === "/guide" ||
                 location.pathname === "/signin" ||
@@ -33,6 +34,7 @@ function App() {
             }
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/event/:id" element={<EventIdPage />} />
                 <Route path="/event" element={<EventPage />} />
                 <Route path="/alumni" element={<Alumni />} />
                 <Route path="/guide" element={<Guide />} />

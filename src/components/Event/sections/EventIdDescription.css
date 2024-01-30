@@ -1,0 +1,49 @@
+.description-event-id .details {
+    margin-top: 200px;
+    padding: 100px;
+    border-radius: 30px;
+    background: #FFF;
+    box-shadow: 0px 2px 6px 5px rgba(0, 0, 0, 0.25);
+}
+
+.description-event-id .details .title {
+    color: #1F2F54;
+    font-family: "Manrope-bold", Helvetica;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+.description-event-id .details .parag {
+    color: #1F2F54;
+    text-align: justify;
+    font-family: "Manrope", Helvetica;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.description-event-id .details .contact-us span{
+    color: #1F2F54;
+    text-align: justify;
+    font-family: "Manrope", Helvetica;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+    display: block;
+    text-align: right;
+}
+
+
+.description-event-id .details .contact-us .button-inside{
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+

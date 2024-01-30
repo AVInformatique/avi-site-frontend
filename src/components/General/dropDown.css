@@ -38,12 +38,14 @@
 }
 
 .dropDown .menu {
+    list-style-type: none;
     opacity: 1;
     width: 180px;
     height: 200px;
     border-radius: 15px;
     box-shadow: 5px 5px 24px -4px rgba(0,0,0,0.2);
     padding-left: 20px;
+    z-index: 9999;
 
     position: absolute;
     top: 50px;
@@ -57,12 +59,19 @@
     transition: opacity 200ms ease-in, height 1s;
 }
 
+.dropDown .menu p{
+    width: 100%;
+    text-align: center;
+    padding-right: 15px;
+}
+
 .dropDown .menu::-webkit-scrollbar,
 .dropDown .menu::-webkit-scrollbar-thumb {
-  width: 26px;
-  border-radius: 13px;
-  background-clip: padding-box;
-  border: 10px solid transparent;
+    width: 26px;
+    border-radius: 13px;
+    background-clip: padding-box;
+    border: 10px solid transparent;
+    color: #FF738B;
 }
 
 .dropDown .menu::-webkit-scrollbar-thumb {        

@@ -1,10 +1,10 @@
 .welcome-event {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 0 !important;
+    padding-top: 150px !important;
 }
 
 .welcome-event .head {
-    margin-bottom: 8px;
+    margin-bottom: 30px;
 }
 
 .welcome-event .title h2 {

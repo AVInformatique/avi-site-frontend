@@ -1,0 +1,12 @@
+.not-found.overlap {
+    background-color: #FF4363;
+    width: 100%;
+
+}
+
+.not-found.overlap .img{
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);  
+}

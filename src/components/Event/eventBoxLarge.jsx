@@ -5,26 +5,31 @@ import './eventBoxLarge.css';
 
 export const EventBoxLarge = ({ event }) => {
     const [state, dispatch] = useState('default');
-    console.log(event.date);
     const date = event.date ? event.date.toDate() : new Date("1/1/2003");
+    const monthString = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct","Nov", "Dec"]
 
     return (
-        <div className={`event-box-large ${state}`}
+        <a className={`event-box-large ${state}`}
+            href={`/event/${event.id}`}
              onMouseEnter={() => { dispatch('hover'); }}
              onMouseLeave={() => { dispatch('default'); }}
              onMouseDown={() => {dispatch('press');}}
              onMouseUp={() => {dispatch('hover');}}
         >
             <div className="left-part">
-                <div className="event-img"> </div>
+                <div className="event-img"> 
+                {event.img && (
+                    <img src={event.img}></img>
+                )}
+                </div>
                 <div className="date-month">
-                    <span className="day">DD</span>
-                    <span className="mon">MON</span>
+                    <span className="day">{`${(date.getDate() < 10) ? '0' : ''}${date.getDate()}`}</span>
+                    <span className="mon">{monthString[date.getMonth()]}</span>
                 </div>
             </div>
             <div className="right-part">
                 <div className="info">
-                    <p className="date">{date.toUTCString()}</p>
+                    <p className="date">{date.toLocaleString()}</p>
                     <p className="name">{event.name}</p>
                     <p className="description">{event.description}</p>
                 </div>
@@ -37,6 +42,6 @@ export const EventBoxLarge = ({ event }) => {
                     stateParrent = {state}
                 />
             </div>
-        </div>
+        </a>
     );
 };

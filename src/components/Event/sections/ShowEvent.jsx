@@ -22,8 +22,10 @@ const ShowEvent = () => {
 
     async function fetchData() {
         try {
-            searchParams.set('search', slug);
-            setSearchParams(searchParams);
+            if (slug != '') {
+                searchParams.set('search', slug);
+                setSearchParams(searchParams);
+            }
             const events = await getEventsByTimeAndName(monthFilter, yearFilter, slug);
             setEvents(events);
             console.log(monthFilter, yearFilter, slug)

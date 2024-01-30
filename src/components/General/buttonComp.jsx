@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './buttonComp.css';
 
-export const ButtonComp = ({ stateParrent, callback = () => {}, isUsedSubmit = false,
+export const ButtonComp = ({ stateParrent, callback = () => {}, isUsedSubmit = false, href = '',
                             size = 'large', color = 'yellow', text = 'Text', divClassName='' }) => {
     const [state, dispatch] = useState('default')
 
@@ -14,10 +14,16 @@ export const ButtonComp = ({ stateParrent, callback = () => {}, isUsedSubmit = f
             onMouseUp={() => { dispatch('hover');}}
             onClick = {callback}
             type = {isUsedSubmit ? 'submit' : 'button'}
+            href = {href}
         >
-            <div className="overlap">
-                <p className='text'>{text}</p>
-            </div> 
+            {href === '' ?
+                (<div className="overlap">
+                    <p className='text'>{text}</p>
+                </div>)
+            :   (<a className="overlap" href={href} target="_blank">
+                    <p className='text'>{text}</p>
+                </a>) 
+            } 
         </button>
     );
 };

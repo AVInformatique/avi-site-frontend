@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getEventById } from '../../services/eventService';
 
 // component for displaying events
-import WelcomeEvent from './sections/WelcomeEvent'
-import ShowEvent from './sections/ShowEvent'
+import DetailEventId from './sections/DetailEventId'
+import EventIdDescription from './sections/EventIdDescription'
 
 const EventId = () => {
     const { id } = useParams();
@@ -24,8 +24,8 @@ const EventId = () => {
 
     return (
         <Fragment>
-            <WelcomeEvent event={event}></WelcomeEvent>
-            <ShowEvent></ShowEvent>
+            <DetailEventId event={event}></DetailEventId>
+            <EventIdDescription event={event}></EventIdDescription> */
         </Fragment>
     );
 };

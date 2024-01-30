@@ -66,8 +66,8 @@ const Navbar = () => {
                         <li className={activePath === "/" ? "active" : ""}>
                             <a href="/">Home</a>
                         </li>
-                        <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                        <li className={activePath === "/event" ? "active" : ""}>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>
@@ -119,8 +119,8 @@ const Navbar = () => {
                     <li className={activePath === "/" ? "active" : ""}>
                             <a href="/">Home</a>
                         </li>
-                        <li className={activePath === "/events" ? "active" : ""}>
-                            <a href="/events">Events</a>
+                        <li className={activePath === "/event" ? "active" : ""}>
+                            <a href="/event">Events</a>
                         </li>
                         <li className={activePath === "/alumni" ? "active" : ""}>
                             <a href="/alumni">Alumnis</a>

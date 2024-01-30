@@ -23,7 +23,7 @@ function App() {
         <Fragment>
             {
                 (location.pathname === "/" ||
-                location.pathname.includes("/events") ||
+                location.pathname.includes("/event") ||
                 location.pathname === "/alumni" ||
                 location.pathname === "/guide" ||
                 location.pathname === "/signin" ||
@@ -34,7 +34,7 @@ function App() {
             }
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/events/:id" element={<EventIdPage />} />
+                <Route path="/event/:id" element={<EventIdPage />} />
                 <Route path="/event" element={<EventPage />} />
                 <Route path="/alumni" element={<Alumni />} />
                 <Route path="/guide" element={<Guide />} />

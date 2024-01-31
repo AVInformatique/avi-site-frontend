@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import { Button } from "react-bootstrap";
 import "./home.css";
 import aviLogo from "/src/assets/avi.svg";
-import repasNoel from "/src/assets/repas_noel_23.jpg";
+import { repas_noel_img } from "/src/images.jsx";
 
 class Home extends Component {
     render() {
@@ -44,15 +44,6 @@ class Home extends Component {
                             </p>
                         </div>
                     </div>
-
-                    {/* Add "More" button here
-                    If the button is clicked, the page show the next 2 paragraphs
-                    Button is hidden after clicked
-                    */}
-                    {/* <Button className={"button-more"} variant="outline-primary" size="sm" onClick={() => {
-                        document.getElementsByClassName("more")[0].style.display = "block";
-                        document.getElementsByClassName("button-more")[0].style.display = "none";
-                    }}>More</Button> */}
                 </div>
             </div>
         );
@@ -60,7 +51,7 @@ class Home extends Component {
         // Right side
         const rightSide = (
             <div className="right-side">
-                <img className="image-avi" src={repasNoel} alt="AVI"/>
+                <img className="image-avi" src={repas_noel_img.src} alt="Repas Img"/>
             </div>
         );
 

@@ -1,73 +1,67 @@
 .overlay-decoration {
     width: 100%;
     position: absolute;
-    height: 450px;
+    height: 400px;
     background-color: #FF4363;
     top: 350px;
 }
 
-.detail-event-id .row{
+.guide-intro .row{
     width: 100%;
     position: relative;
-    height: 550px;
+    height: 500px;
     top: 120px;
 }
 
-.detail-event-id .img {
+.guide-intro .img {
     height: 100%;
-}
-
-.detail-event-id .img .event-img{
     background-color: #1f2f54;
     border-radius: 40px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 00% 50%;
-    box-shadow: 3px 1px 13px 0px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
-.detail-event-id .details .detail-box {
-    height: 420px;
+.guide-intro .details .detail-box {
+    height: 400px;
     background-color: #fff;
-    box-shadow: 3px 1px 13px 0px rgba(0,0,0,0.3);
+    box-shadow: 3px 1px 13px 0px rgba(0,0,0,0.2);
     border-radius: 20px;
     position: relative;
-    padding: 50px 70px 20px 70px;
+    padding: 40px 70px 20px 70px;
 }
 
-.detail-event-id .details .name {
+.guide-intro .details .name {
     color: '#1F2F54';
     font-size: 70px;
     font-family: "Manrope-SemiBold", Helvetica;
     font-weight: 550;
-    line-height: 100px;
+    line-height: 80px;
     word-wrap: 'break-word';
     margin: 0;
     margin-bottom: 15px;
 }
 
-.detail-event-id .details .detail-box .title{
+.guide-intro .details .detail-box .title{
     color: '#1F2F54';
-    font-size: 40px;
+    font-size: 35px;
     font-family: "Manrope-SemiBold", Helvetica;
     font-weight: 550;
-    line-height: 70px;
+    line-height: 60px;
     word-wrap: 'break-word';
     margin: 0;
 }
 
-.detail-event-id .details .detail-box .small-description{
+.guide-intro .details .detail-box .small-description{
     color: '#1F2F54';
-    font-size: 27px;
+    width: 100%;
+    font-size: 25px;
     font-family: "Manrope-SemiBold", Helvetica;
     font-weight: 400;
-    word-wrap: 'break-word';
     margin: 0;
     text-align: justify;
+    text-justify: inter-word;
 }
 
-.detail-event-id .details .detail-box .list-with-icon{
+.guide-intro .details .detail-box .list-with-icon{
     color: '#1F2F54';
     font-size: 25px;
     font-family: "Manrope-SemiBold", Helvetica;
@@ -80,12 +74,12 @@
     margin-top: 15px;
 }
 
-.detail-event-id .details .list-with-icon span{
+.guide-intro .details .list-with-icon span{
     margin-left: 10px;
     color: #1f2f54;
 }
 
-.detail-event-id .details .button-inside{
+.guide-intro .details .button-inside{
     position: absolute;
     bottom: 27px;
     left: 50%;

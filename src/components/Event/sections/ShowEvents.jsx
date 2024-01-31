@@ -1,38 +1,55 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom'
+
 import '/src/grid.css';
-import './ShowEvent.css';
+import './ShowEvents.css';
 
-import { getEvents, getEventsByTimeAndName } from '/src/services/eventService.js';
+// Event handlers
+import { getEventsByTimeAndName } from '/src/services/eventService.js';
 
+// Components
 import { DropDown } from '/src/components/General/dropDown'
 import { ButtonIcon } from '/src/components/General/buttonIcon'
 import { SearchBox } from '/src/components/General/searchBox'
-import { EventBoxMedium } from '../eventBoxMedium'
+import { EventBoxMedium } from '../basics/eventBoxMedium'
 
-import { IoMdSearch } from "react-icons/io";
+// Icons
+import { IoClose } from "react-icons/io5";
 
 const ShowEvent = () => {
+    const yearDebut = 2021;
 
-    const [events, setEvents] = useState([{}]);
     const [searchParams, setSearchParams] = useSearchParams()
-    const [monthFilter, setMonth] = useState("*");
-    const [yearFilter, setYear] = useState("*");
-    const [slug, setSlug] = useState(searchParams.get('search') || "");
 
-    async function fetchData() {
+    const [events, setEvents] = useState([{}]);    
+    const [monthIndex, setMonthIndex] = useState(0);
+    const [yearIndex, setYearIndex] = useState(0);
+    const [slug, setSlug] = useState(searchParams.get('search') || "");
+    const [doRefresh, setDoRefresh] = useState(0);
+
+    async function fetchData(isRefresh = false) {
         try {
             if (slug != '') {
                 searchParams.set('search', slug);
                 setSearchParams(searchParams);
             }
-            const events = await getEventsByTimeAndName(monthFilter, yearFilter, slug);
+            const events = isRefresh 
+                            ? await getEventsByTimeAndName(0, 0, '')
+                            : await getEventsByTimeAndName(monthIndex, yearIndex && (yearIndex+yearDebut-1), slug);
+                            
+
             setEvents(events);
-            console.log(monthFilter, yearFilter, slug)
         } catch (error) {
             console.error('Error fetching events:', error);
         }
     };
+
+    function deleteFilter() {
+        setDoRefresh(doRefresh+1); 
+        fetchData(true);
+        searchParams.delete('search');
+        setSearchParams(searchParams);
+    }
 
     useEffect(() => { 
         fetchData();
@@ -46,7 +63,7 @@ const ShowEvent = () => {
 
     const currentYear = new Date().getFullYear();
     const yearList = ["Year"];
-    for (let year = 2021; year <= currentYear; year++) {
+    for (let year = yearDebut; year <= currentYear; year++) {
         yearList.push(year.toString());
     }
 
@@ -62,14 +79,18 @@ const ShowEvent = () => {
 
             <div className="row filter-bar">
                 <div className="col l-1 search-icon">
-                    <ButtonIcon icon = {<IoMdSearch/>} ></ButtonIcon>
+                    <ButtonIcon 
+                        icon = {<IoClose />} 
+                        callback = {() => {deleteFilter()}}    
+                    ></ButtonIcon>
                 </div>
                 <div className="col l-2">
                     <DropDown
                         listItems={monthList}
                         text = "Month"
                         size = "small"
-                        callback = {(month, index) => {setMonth(index === "0" ? "*" : index)}}
+                        callback = {(month, index) => {setMonthIndex(index)}}
+                        doRefresh = {doRefresh}
                     />
                 </div>
                 <div className="col l-2">
@@ -77,15 +98,18 @@ const ShowEvent = () => {
                         listItems={yearList}
                         text = "Year"
                         size = "small"
-                        callback = {(year) => {setYear(year === "Year" ? "*" : year);}}
+                        callback = {(year, index) => {setYearIndex(index)}}
+                        doRefresh = {doRefresh}
                     />
                 </div>
                 <div className="col l-7">
                     <SearchBox
                         callback = {()=>{fetchData()}}
                         usedAsFrom = {false}
-                        text = {slug || 'Looking for some events?'}
+                        placeholder = {'Looking for some events?'}
+                        value = {searchParams.get('search')}
                         sendInputValue = {setSlug}
+                        doRefresh = {doRefresh}
                     ></SearchBox>
                 </div>
             </div>

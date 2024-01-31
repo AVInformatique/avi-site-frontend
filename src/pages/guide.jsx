@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
+import Guide from "/src/components/Guide/Guide";
 
-const Guide = () => {
+const GuidePage = () => {
     return (
         <Fragment>
-            <h1>Guide</h1>
+            <Guide></Guide>
         </Fragment>
     );
 }
 
-export default Guide;
+export default GuidePage;

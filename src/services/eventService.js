@@ -91,8 +91,8 @@ function getEventsByTimeAndName(month, year, name) {
                     const findingName = name.trim().toLowerCase().normalize('NFKD');
                     
                     if (nameE.includes(name) &&
-                        ( (month == "*") || (parseInt(month) == (monthE+1)) ) &&
-                        ( (year == "*")  || (parseInt(year) == yearE)   )) {
+                        ( (month == 0) || (month == (monthE+1)) ) &&
+                        ( (year == 0)  || (year == yearE)   )) {
                             events.push(event);
                         }
                 });

@@ -3,7 +3,8 @@ import { getEvents, getUpcomingEvents } from '../../services/eventService';
 
 // component for displaying events
 import WelcomeEvent from './sections/WelcomeEvent'
-import ShowEvent from './sections/ShowEvent'
+import ShowEvents from './sections/ShowEvents'
+import ShowTreeEvents from './sections/ShowTreeEvents'
 
 const Events = () => {
     const [UpcomingEvents, setUpcomingEvents] = useState([{}]);
@@ -23,7 +24,8 @@ const Events = () => {
     return (
         <Fragment>
             <WelcomeEvent event={UpcomingEvents[0]}></WelcomeEvent>
-            <ShowEvent></ShowEvent>
+            <ShowTreeEvents></ShowTreeEvents>
+            <ShowEvents></ShowEvents>
         </Fragment>
     );
 };

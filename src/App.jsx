@@ -10,7 +10,7 @@ import NavBar from "/src/components/Navbar/navbar";
 import HomePage from "/src/pages/home";
 import Alumni from "/src/pages/alumnis";
 import NotFound from "/src/pages/notfound";
-import Guide from "/src/pages/guide";
+import GuidePage from "/src/pages/guide";
 import EventPage from "/src/pages/events";
 import EventIdPage from "/src/pages/eventId"
 import SignInPage from "/src/pages/signin";
@@ -37,7 +37,7 @@ function App() {
                 <Route path="/event/:id" element={<EventIdPage />} />
                 <Route path="/event" element={<EventPage />} />
                 <Route path="/alumni" element={<Alumni />} />
-                <Route path="/guide" element={<Guide />} />
+                <Route path="/guide" element={<GuidePage />} />
                 <Route path="/signin" element={<SignInPage />} />
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="*" element={<NotFound />} />

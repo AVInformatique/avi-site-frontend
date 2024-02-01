@@ -1,19 +1,33 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "alumnis",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "promotion",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "name",
-          "order": "ASCENDING"
-        }
-      ]
-    }
-  ],
-  "fieldOverrides": []
-}
+    "indexes": [
+      {
+        "collectionGroup": "alumnis",
+        "queryScope": "COLLECTION",
+        "fields": [
+          {
+            "fieldPath": "promotion",
+            "order": "ASCENDING"
+          },
+          {
+            "fieldPath": "name",
+            "order": "ASCENDING"
+          }
+        ]
+      },
+      {
+        "collectionGroup": "events",
+        "queryScope": "COLLECTION",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "order": "DESCENDING"
+          },
+          {
+            "fieldPath": "name",
+            "order": "ASCENDING"
+          }
+        ]
+      }
+    ],
+    "fieldOverrides": []
+  }

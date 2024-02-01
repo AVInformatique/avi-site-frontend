@@ -12,11 +12,12 @@ import { ButtonComp } from '/src/components/General/buttonComp';
 import { EventTree } from '../basics/eventTree';
 
 // Icons
-import { IoClose } from "react-icons/io5";
+
 
 const ShowTreeEvents = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const numberEventLimit = 4;
 
     const handleButtonClick = () => {
         if (!location.pathname.includes("/event")) {
@@ -51,7 +52,7 @@ const ShowTreeEvents = () => {
             <div className="row event-tree">
                 <div className="col l-12">
                     <EventTree
-                        events = {events}
+                        events = {events.slice(numberEventLimit)}
                         divClassName='event-tree-inside'
                     ></EventTree>
                 </div>

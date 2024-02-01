@@ -23,7 +23,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 00% 50%;
+    object-position: 00% 30%;
     box-shadow: 3px 1px 13px 0px rgba(0,0,0,0.3);
 }
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import '/src/grid.css';
 import './ShowTreeEvents.css';
@@ -14,6 +15,18 @@ import { EventTree } from '../basics/eventTree';
 import { IoClose } from "react-icons/io5";
 
 const ShowTreeEvents = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        if (!location.pathname.includes("/event")) {
+            navigate("/event");
+            const event = new Event('pathchange');
+            window.dispatchEvent(event);
+        }
+        window.scrollTo(0, 1500);
+    }
+
     const [events, setEvents] = useState([]);
     async function fetchData(isRefresh = false) {
         try {
@@ -46,7 +59,7 @@ const ShowTreeEvents = () => {
                     divClassName='button-comp-inside'
                     color = 'red'
                     text = 'And so on ...'
-                    callback = {() => {window.scrollTo(0, 1500)}}
+                    callback = {() => {handleButtonClick()}}
                 ></ButtonComp>
             </div>
         </div>

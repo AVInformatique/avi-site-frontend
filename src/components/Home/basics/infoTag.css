@@ -1,0 +1,46 @@
+.info-tag .overlap {
+    width: 580px;
+    height: 380px;
+    border-radius: 30px;
+    background: #FFBA07;
+    padding: 40px;
+}
+
+.info-tag .icon {
+    width: 90px;
+    height: 90px;
+    color: #FFBA07; 
+    
+    border-radius: 20px;
+    background-color: #FFF;
+    font-size: 50px;
+    line-height: 90px;
+    margin: 0;
+}
+
+.info-tag .title {
+    color: #FFF;
+    font-family: "Manrope-Bold";
+    font-size: 40px;
+    font-style: normal;
+    line-height: normal;
+    margin: 7px 0 0 0;
+}
+
+.info-tag .description {
+    color: #FFF;
+    text-align: justify;
+    font-family: "Manrope-Medium";
+    font-size: 21px;
+    font-style: normal;
+    line-height: normal;
+    margin: 7px 0 0 0;
+}
+
+.info-tag.red .overlap {
+    background-color: #FF4363;
+}
+
+.info-tag.red .icon {
+    color: #FF4363;
+}

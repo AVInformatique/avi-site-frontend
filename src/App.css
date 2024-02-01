@@ -28,6 +28,11 @@
       url("/src/assets/font/static/Manrope-Bold.ttf") format("truetype");
 }
 
+body {
+    background-color: #ecfdfd;
+    margin: 0;
+}
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

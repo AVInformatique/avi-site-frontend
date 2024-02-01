@@ -1,0 +1,44 @@
+.welcome-home {
+    padding-top: 180px !important;
+    height: 45vw;
+}
+
+.welcome-home .text-part .header {
+    color: #1F2F54;
+    font-family: "Manrope-Bold";
+    font-size: 60px;
+    font-style: normal;
+    line-height: 65px;
+    margin: 0;
+}
+
+.welcome-home .text-part .intro {
+    color: #1F2F54;
+    font-family: "Manrope";
+    font-size: 20px;
+    font-style: normal;
+    text-align: justify;
+
+    transition: opacity 200ms ease-in, max-height 0ms ease-in;
+}
+
+.welcome-home .left-part .button-welcome{
+    margin-top: 10px;
+    left: -8px;
+}
+
+.welcome-home .text-part .more.hide {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+}
+
+.welcome-home .img-home {
+    aspect-ratio: 7/8;
+    width: 50vw;
+    background-color: #1F2F54;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 50px;
+}

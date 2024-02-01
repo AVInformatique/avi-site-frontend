@@ -46,7 +46,7 @@ const ShowTreeEvents = () => {
                     divClassName='button-comp-inside'
                     color = 'red'
                     text = 'And so on ...'
-                    callback = {() => {}}
+                    callback = {() => {window.scrollTo(0, 1500)}}
                 ></ButtonComp>
             </div>
         </div>

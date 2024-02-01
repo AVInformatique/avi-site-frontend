@@ -52,7 +52,9 @@ const ShowTreeEvents = () => {
             <div className="row event-tree">
                 <div className="col l-12">
                     <EventTree
-                        events = {events.slice(numberEventLimit)}
+                        events = {events.length > numberEventLimit 
+                                    ? events.slice(numberEventLimit)
+                                    : events }
                         divClassName='event-tree-inside'
                     ></EventTree>
                 </div>

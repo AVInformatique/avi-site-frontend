@@ -22,15 +22,15 @@ function App() {
     return (
         <Fragment>
             {
-                (location.pathname === "/" ||
-                location.pathname.includes("/event") ||
-                location.pathname === "/alumni" ||
-                location.pathname === "/guide" ||
-                location.pathname === "/signin" ||
-                location.pathname === "/admin")
-                && (
+                // (location.pathname === "/" ||
+                // location.pathname.includes("/event") ||
+                // location.pathname === "/alumni" ||
+                // location.pathname === "/guide" ||
+                // location.pathname === "/signin" ||
+                // location.pathname === "/admin")
+                // && (
                     <NavBar />
-                )
+                //)
             }
             <Routes>
                 <Route path="/" element={<HomePage />} />

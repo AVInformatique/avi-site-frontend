@@ -27,7 +27,7 @@ function getEvents() {
 function getUpcomingEvents() {
     const eventRef = collection(db,"events")
     const currentTime = new Date(); 
-    const q = query(eventRef, where("date", ">=", currentTime), orderBy("date", "asc"));
+    const q = query(eventRef, where("date", ">=", currentTime), orderBy('date', 'desc'));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then((querySnapshot) => {
@@ -40,7 +40,6 @@ function getUpcomingEvents() {
                     upcomingEvents.push(event);
                 });
                 // Sort events by date in descending order
-                upcomingEvents.sort((a, b) => a.date - b.date);
                 resolve(upcomingEvents);
             })
             .catch((err) => {

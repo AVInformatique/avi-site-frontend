@@ -1,3 +1,76 @@
 .event-tree {
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-tree .middle-line {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #FF738B;
+
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+}
+.event-tree .tree-element {
+    position: relative;
+}
+
+.event-tree .tree-element .tree-node {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.4);
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.event-tree .tree-element .tree-node .tree-node-inside{
+    width: 16px;
+    height: 16px;
+    background-color: #FF738B;
+    border-radius: 50%;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.event-tree .tree-element .event-date{
+    position: absolute;
+    top: 10%;
+    left: 56.5%;
+    transform: translate(0, -50%);
+    text-align: right;
+
+    color: #1f2f54;
+    font-family: "Manrope-SemiBold", Helvetica;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.event-tree .tree-element.right .event-date{
+    left: auto;
+    right: 56.5%;
+    text-align: left;
+}
+
+
+.event-tree .tree-element:nth-last-child(1) {
+    padding-bottom: 30px;
+}
+
+.event-tree .item-timeline.right{
+    float: right;
 }

@@ -4,15 +4,14 @@
 
 .show-event .head {
     color: #1F2F54;
-    font-family: "Manrope-SemiBold", Helvetica;
+    font-family: "Manrope-Medium", Helvetica;
 }
 
 .show-event .head .intro {
     text-align: center;
     font-size: 30px;
     font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    font-family: "Manrope-SemiBold", Helvetica;
     margin: 0;
 }
 
@@ -20,8 +19,8 @@
     text-align: center;
     font-size: 75px;
     font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 80px;
     margin: 0;
 }
 

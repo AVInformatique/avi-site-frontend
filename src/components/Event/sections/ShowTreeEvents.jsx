@@ -8,7 +8,7 @@ import { getUpcomingEvents } from '/src/services/eventService.js';
 
 // Components
 import { ButtonComp } from '/src/components/General/buttonComp';
-import { EventTree } from '../basics/eventTree'
+import { EventTree } from '../basics/eventTree';
 
 // Icons
 import { IoClose } from "react-icons/io5";
@@ -39,8 +39,15 @@ const ShowTreeEvents = () => {
                 <div className="col l-12">
                     <EventTree
                         events = {events}
+                        divClassName='event-tree-inside'
                     ></EventTree>
                 </div>
+                <ButtonComp
+                    divClassName='button-comp-inside'
+                    color = 'red'
+                    text = 'And so on ...'
+                    callback = {() => {}}
+                ></ButtonComp>
             </div>
         </div>
     );

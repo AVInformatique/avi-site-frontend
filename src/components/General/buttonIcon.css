@@ -19,7 +19,7 @@
     transform: translate(-50%, -50%);  
 
     transition: height 200ms ease-in, width 200ms ease-in,
-    background-color 200ms ease-in;
+    background-color 200ms ease-in, font-size 200ms ease-out;
 }
 
 .button-icon .overlap { /* icon setting */
@@ -45,6 +45,7 @@
     border-radius: 17px;
     height: 100%;
     width: 100%;
+    font-size: 50px;
 }
 
 .button-icon.press .overlap{

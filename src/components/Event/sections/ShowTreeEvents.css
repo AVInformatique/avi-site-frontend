@@ -5,13 +5,14 @@
 .show-event-tree .head {
     color: #1F2F54;
     font-family: "Manrope-SemiBold", Helvetica;
+    margin-bottom: 40px;
 }
 
 .show-event-tree .head .intro {
     text-align: center;
     font-size: 30px;
     font-style: normal;
-    font-weight: 600;
+    font-family: "Manrope-SemiBold", Helvetica;
     line-height: normal;
     margin: 0;
 }
@@ -20,25 +21,13 @@
     text-align: center;
     font-size: 75px;
     font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 70px;
     margin: 0;
 }
 
-.show-event-tree .head .intro-description {
-    display: flex;
-    width: 898px;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 50px;;
-
-    text-align: justify;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.show-event-tree .event-list .event-box-medium {
-    margin-top: 30px;
+.show-event-tree .event-tree .button-comp-inside{
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, 0);
 }

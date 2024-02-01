@@ -49,14 +49,13 @@
   }
 
 .event-box-medium .date-month .day {
-    font-family: "Manrope-SemiBold", Helvetica;
-    font-size: 45px;
+    font-family: "Manrope-Bold", Helvetica;
+    font-size: 48px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
 
-    top: 6px;
     color: #000;
     width: 100%;;
     text-align: center;
@@ -64,11 +63,12 @@
 
 .event-box-medium .date-month .mon {
     color: #ff4363;
-    font-size: 30px;
+    font-family: "Manrope-Medium", Helvetica;
+    font-size: 28px;
     width: 100%;
     text-align: center;
     position: absolute;
-    bottom: 10px;
+    bottom: 7px;
 }
 
 .event-box-medium .down-part .info {
@@ -100,7 +100,7 @@
     letter-spacing: 0;
     margin: 0;
     position: absolute;
-    top: 34px;
+    top: 28px;
     left: -2px;
     width: 110%;
 
@@ -112,14 +112,14 @@
 .event-box-medium .down-part .description {
     opacity: 0;
     color:#1f2f54;
-    font-family: "Manrope-Medium", Helvetica;
+    font-family: "Manrope", Helvetica;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 0;
     text-align: justify;
     margin: 0;
     position: absolute;  
-    top: 90px;
+    top: 75px;
 
     transition: opacity 200ms ease-out;
 }

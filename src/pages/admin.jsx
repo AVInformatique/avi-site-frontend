@@ -19,16 +19,16 @@ const AdminPage = () => {
         return unsubscribe;
     }, []);
 
-    const handleSignOut = async () => {
-        await logout();
-        navigate("/signin");
-    };
+    // const handleSignOut = async () => {
+    //     await logout();
+    //     navigate("/signin");
+    // };
 
     return (
         <div>
             {user ? (
                 <>
-                    <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p>
+                    {/* <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p> */}
 
                     <Admin currentUser={user} />
                 </>

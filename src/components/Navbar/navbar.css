@@ -4,15 +4,18 @@
     display: flex;
     align-items: center;
     position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 0.5rem 2rem 0.5rem 0;
     background-color: #fff;
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 9999;
     /* margin: auto; */
-    margin-left: 14%;
+    /* margin-left: 14%; */
     border-radius: 25px;
-    margin-top: 1em;
+    /* margin-top: 1em; */
 }
 
 .navigation.tel-view {
@@ -124,14 +127,15 @@
         display: flex;
         align-items: center;
         position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         padding: 0.5rem 2rem 0.5rem 0;
         background-color: #fff;
         color: black;
         box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
         z-index: 9999;
-        margin-left: 4%;
         border-radius: 25px;
-        margin-top: 1em;
     }
 
     .navigation-menu li {

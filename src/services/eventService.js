@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, addDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import { doc, getDoc } from "firebase/firestore"; // Add this import statement
 
@@ -119,14 +119,25 @@ function addEvent(user, event) {
             reject('Name and date are required');
         });
     }
-    const eventRef = collection(db, 'events');
+    // const eventRef = collection(db, 'events');
+    // return new Promise((resolve, reject) => {
+    //     eventRef
+    //         .add(event)
+    //         .then((docRef) => {
+    //             resolve(docRef.id);
+    //         })
+    //         .catch((err) => {
+    //             reject(err);
+    //         });
+    // });
+
     return new Promise((resolve, reject) => {
-        eventRef
-            .add(event)
-            .then((docRef) => {
-                resolve(docRef.id);
+        addDoc(collection(db, 'events'), event)
+            .then(() => {
+                resolve();
+                console.log('Document successfully added!');
             })
-            .catch((err) => {
+            .catch(err => {
                 reject(err);
             });
     });
@@ -175,15 +186,26 @@ function deleteEventById(user, id) {
         });
     }
 
-    const eventRef = collection(db, 'events');
+    // const eventRef = collection(db, 'events');
+    // return new Promise((resolve, reject) => {
+    //     eventRef
+    //         .doc(id)
+    //         .delete()
+    //         .then(() => {
+    //             resolve();
+    //         })
+    //         .catch((err) => {
+    //             reject(err);
+    //         });
+    // });
+
     return new Promise((resolve, reject) => {
-        eventRef
-            .doc(id)
-            .delete()
+        deleteDoc(doc(db, 'events', id))
             .then(() => {
                 resolve();
+                console.log('Document successfully deleted!');
             })
-            .catch((err) => {
+            .catch(err => {
                 reject(err);
             });
     });

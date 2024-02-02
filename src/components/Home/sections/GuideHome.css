@@ -1,0 +1,50 @@
+.guide-home .head {
+    color: #1F2F54;
+    font-family: "Manrope-Medium", Helvetica;
+}
+
+.guide-home .head .intro {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-family: "Manrope-SemiBold", Helvetica;
+    margin: 0;
+}
+
+.guide-home .head .title {
+    text-align: center;
+    font-size: 75px;
+    font-style: normal;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 80px;
+    margin: 20px 0 0 0 ;
+}
+
+.guide-home .head .intro-description {
+    display: flex;
+    width: 898px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;;
+
+    text-align: justify;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.guide-home .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.guide-home .buttons .text-middle {
+    color: #1F2F54;
+    text-align: justify;
+    font-family: "Manrope-Bold";
+    font-size: 30px;
+    line-height: 80px;
+    margin: 0;
+    margin: 0 20px 0 20px;
+}

@@ -14,12 +14,12 @@
 
 .dropDown .selected-box .text {
     color: #1F2F54;
-    font-family: "Manrope-Bold", Helvetica;
+    font-family: "Manrope-SemiBold", Helvetica;
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
     line-height: 74px;
-    margin: 0 0 0 15px;
+    margin-left: 25px;
     text-align: left;
     width: 110px;
 }
@@ -92,7 +92,7 @@
 .dropDown .dropdown-item .item-text{
     margin: 0;
     color: #1F2F54;
-    font-family: "Manrope-Bold", Helvetica;
+    font-family: "Manrope-SemiBold", Helvetica;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;

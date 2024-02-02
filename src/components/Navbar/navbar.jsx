@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useRef } from "react";
 import "./navbar.css";
 import { auth } from "/src/config/firebaseConfig.js";
 import aviLogo from "/src/assets/avi.svg";
@@ -7,6 +7,14 @@ const Navbar = () => {
     const [user, setUser] = useState(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const [activePath, setActivePath] = useState("/");
+    const [isShown, setIsShown] = useState(true)
+    const posY = useRef(window.scrollY);
+
+    const handleScroll = () => {
+        const newPosY = window.scrollY;
+        setIsShown(newPosY < posY.current);
+        posY.current = newPosY;
+    }
 
     useEffect(() => {
         const currentPath = window.location.pathname;
@@ -31,9 +39,16 @@ const Navbar = () => {
         return unsubscribe;
     }, []);
 
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
     return (
         <Fragment>
-            <nav className="navigation computer-view">
+            <nav className={`navigation computer-view ${isShown ? 'show' : 'hide'}`}>
                 <a href="/" className="logo-nav"><img src={aviLogo} alt="Logo AVI"/></a>
 
                 <button

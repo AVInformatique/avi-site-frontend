@@ -1,0 +1,33 @@
+.who-are-we-home .left-text {
+    margin-top: 50px;
+}
+
+.who-are-we-home .left-text .intro {
+    color: #1F2F54;
+    font-family: "Manrope-SemiBold";
+    font-size: 30px;
+    margin: 0;
+}
+
+.who-are-we-home .left-text .title {
+    color: #1F2F54;
+    font-family: "Manrope-Bold";
+    font-size: 70px;
+    line-height: 75px;
+    margin: 0 0 20px 0 ;
+}
+
+.who-are-we-home .left-part .button-left-part {
+    margin-top: 30px;
+    left: 50%;
+    transform: translate(-52%, 0);
+}
+
+.who-are-we-home .right-part .img-tag{
+    width: 581px;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #1F2F54;
+    margin-bottom: 30px
+}

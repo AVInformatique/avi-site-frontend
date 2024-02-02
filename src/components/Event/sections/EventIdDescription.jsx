@@ -1,10 +1,11 @@
-import { useState, useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 import '/src/grid.css';
 import './EventIdDescription.css';
 
+//components
 import { ButtonComp } from '/src/components/General/buttonComp';
 
-const EventIdDescription = ({event}) => {
+const Guide = ({event}) => {
     function separateIntoParagraphs(text) {
         const paragraphs = text.split('\n');
         return paragraphs;
@@ -43,4 +44,4 @@ const EventIdDescription = ({event}) => {
     );
 };
 
-export default EventIdDescription;
+export default Guide;

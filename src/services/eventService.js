@@ -1,10 +1,10 @@
-import { collection, getDocs, query, where, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
-import { doc, getDoc } from "firebase/firestore"; // Add this import statement
+import { doc, getDoc, addDoc, deleteDoc } from "firebase/firestore"; // Add this import statement
 
 function getEvents() {
-    const eventRef = collection(db, 'events');
-    const q = query(eventRef);
+    const eventRef = collection(db,"events");
+    const q = query(eventRef, orderBy("date"));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then((querySnapshot) => {
@@ -25,9 +25,9 @@ function getEvents() {
 }
 
 function getUpcomingEvents() {
-    const eventRef = collection(db, 'events');
+    const eventRef = collection(db,"events")
     const currentTime = new Date(); 
-    const q = query(eventRef, where("date", ">=", currentTime));
+    const q = query(eventRef, where("date", ">=", currentTime), orderBy('date', 'desc'));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then((querySnapshot) => {
@@ -40,7 +40,6 @@ function getUpcomingEvents() {
                     upcomingEvents.push(event);
                 });
                 // Sort events by date in descending order
-                upcomingEvents.sort((a, b) => a.date - b.date);
                 resolve(upcomingEvents);
             })
             .catch((err) => {
@@ -50,8 +49,8 @@ function getUpcomingEvents() {
 }
 
 function getEventsByYear(year) {
-    const eventRef = collection(db, 'events');
-    const q = query(eventRef, where('year', '==', year));
+    const eventRef = collection(db,"events")
+    const q = query(eventRef, where('year', '==', year), orderBy('date', "asc"));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then(querySnapshot => {
@@ -72,8 +71,8 @@ function getEventsByYear(year) {
 }
 
 function getEventsByTimeAndName(month, year, name) {
-    const eventRef = collection(db, 'events');
-    const q = query(eventRef);
+    const eventRef = collection(db,"events")
+    const q = query(eventRef, orderBy('date', 'desc'));
     return new Promise((resolve, reject) => {
         getDocs(q)
             .then((querySnapshot) => {
@@ -91,13 +90,12 @@ function getEventsByTimeAndName(month, year, name) {
                     const findingName = name.trim().toLowerCase().normalize('NFKD');
                     
                     if (nameE.includes(name) &&
-                        ( (month == "*") || (parseInt(month) == (monthE+1)) ) &&
-                        ( (year == "*")  || (parseInt(year) == yearE)   )) {
+                        ( (month == 0) || (month == (monthE+1)) ) &&
+                        ( (year == 0)  || (year == yearE)   )) {
                             events.push(event);
                         }
                 });
                 // Sort events by date in descending order
-                events.sort((a, b) => - a.date + b.date);
                 resolve(events);
             })
             .catch((err) => {

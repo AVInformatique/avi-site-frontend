@@ -15,7 +15,16 @@
     /* margin: auto; */
     /* margin-left: 14%; */
     border-radius: 25px;
-    /* margin-top: 1em; */
+    margin-top: 1em;
+    
+    opacity: 1;
+    max-height: 100%;
+    transition: opacity 300ms ease-out, max-height 1000ms ease-out;
+}
+
+.navigation.hide {
+    opacity: 0;
+    max-height: 0;
 }
 
 .navigation.tel-view {

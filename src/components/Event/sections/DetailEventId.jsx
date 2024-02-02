@@ -1,10 +1,12 @@
-import { useState, useEffect, Fragment } from 'react';
-import { useSearchParams } from 'react-router-dom'
+import { Fragment } from 'react';
+
 import '/src/grid.css';
 import './DetailEventId.css';
 
+//components
 import { ButtonComp } from '/src/components/General/buttonComp';
 
+//icons
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 
@@ -40,9 +42,10 @@ const DetailEventId = ({event}) => {
                     </div>
                     <div className="col col l-1"></div>
                     <div className="img col l-4">
-                        {event.img && (
-                            <img src={event.img}></img>
-                        )}
+                        {event.img ? 
+                        <img className="event-img" src={event.img}/>
+                        : <div className="event-img"></div> 
+                        }
                     </div>
                 </div>
             </div>

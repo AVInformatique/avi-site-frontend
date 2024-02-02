@@ -1,0 +1,33 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.show-event-tree .head {
+    color: #1F2F54;
+    font-family: "Manrope-SemiBold", Helvetica;
+    margin-bottom: 40px;
+}
+
+.show-event-tree .head .intro {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-family: "Manrope-SemiBold", Helvetica;
+    line-height: normal;
+    margin: 0;
+}
+
+.show-event-tree .head .title {
+    text-align: center;
+    font-size: 75px;
+    font-style: normal;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 70px;
+    margin: 0;
+}
+
+.show-event-tree .event-tree .button-comp-inside{
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

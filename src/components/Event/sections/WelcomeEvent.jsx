@@ -1,11 +1,10 @@
-import { useState, useEffect, Fragment } from 'react';
 import { useSearchParams } from 'react-router-dom'
+
 import '/src/grid.css';
 import './WelcomeEvent.css';
 
-import { getUpcomingEvents } from '/src/services/eventService';
-
-import { EventBoxLarge } from '../eventBoxLarge';
+//components
+import { EventBoxLarge } from '../basics/eventBoxLarge';
 import { SearchBox } from '/src/components/General/searchBox'
 
 const WelcomeEvent = ({event}) => {
@@ -20,7 +19,8 @@ const WelcomeEvent = ({event}) => {
                 <div className="col l-8">
                     <SearchBox
                         usedAsFrom = {true}
-                        text = {searchParams.get('search') || 'Looking for some events?'}
+                        placeholder = {'Looking for some events?'}
+                        value = {searchParams.get('search')}
                     ></SearchBox>
                 </div>
             </div>

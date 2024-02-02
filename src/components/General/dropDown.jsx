@@ -1,14 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './dropDown.css';
 
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export const DropDown = ({ listItems = [], callback = ()=>{},
+export const DropDown = ({ listItems = [], callback = ()=>{}, doRefresh = 0,
                             size = 'medium', text = 'Text', divClassName='' }) => {
 
     const [isOpenMenu, openCloseMenu] = useState(false);
-    const [selectedIndex, changeIndex] = useState(-1);
+    const [selectedIndex, changeIndex] = useState(0);
     
     const handleDropDown = (event) => {
         event.preventDefault();
@@ -19,9 +19,16 @@ export const DropDown = ({ listItems = [], callback = ()=>{},
         openCloseMenu(!isOpenMenu);
         let index = event.currentTarget.getAttribute('data-index');
         let data = event.currentTarget.getAttribute('data')
-        callback(data, index);
+        callback(data, parseInt(index));
         changeIndex(index);
     }
+
+    const resetValue = () => {
+        changeIndex(0)
+        callback(listItems[0], 0);
+    }
+
+    useEffect(() => {if (doRefresh>0) {resetValue()}},[doRefresh]);
 
     return (
         <div className={`dropDown ${size} ${divClassName}`}>

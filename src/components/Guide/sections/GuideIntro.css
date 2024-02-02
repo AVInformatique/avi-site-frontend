@@ -1,0 +1,90 @@
+.overlay-decoration {
+    width: 100%;
+    position: absolute;
+    height: 400px;
+    background-color: #FF4363;
+    top: 350px;
+}
+
+.guide-intro .row{
+    width: 100%;
+    position: relative;
+    height: 500px;
+    top: 120px;
+}
+
+.guide-intro .img {
+    height: 100%;
+    background-color: #1f2f54;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.guide-intro .details .detail-box {
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 3px 1px 13px 0px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    position: relative;
+    padding: 40px 70px 20px 70px;
+}
+
+.guide-intro .details .name {
+    color: '#1F2F54';
+    font-size: 65px;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 80px;
+    word-wrap: 'break-word';
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.guide-intro .details .detail-box .title{
+    color: '#1F2F54';
+    font-size: 35px;
+    font-family: "Manrope-Bold", Helvetica;
+    font-weight: 550;
+    line-height: 50px;
+    word-wrap: 'break-word';
+    margin: 0;
+}
+
+.guide-intro .details .detail-box .small-description{
+    color: #1F2F54;
+    width: 100%;
+    font-size: 24px;
+    font-family: "Manrope-Medium", Helvetica;
+    font-weight: 400;
+    margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.guide-intro .details .detail-box .list-with-icon{
+    color: '#1F2F54';
+    font-size: 25px;
+    font-family: "Manrope-SemiBold", Helvetica;
+    font-weight: 600;
+    word-wrap: 'break-word';
+    margin: 0;
+    text-align: justify;
+    display: flex;
+    color: #FF4363;
+    margin-top: 15px;
+}
+
+.guide-intro .details .list-with-icon span{
+    margin-left: 10px;
+    color: #1f2f54;
+}
+
+.guide-intro .details .button-inside{
+    position: absolute;
+    bottom: 27px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0);  
+}
+
+
+    

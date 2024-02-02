@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy, addDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import { doc, getDoc } from "firebase/firestore"; // Add this import statement
 
@@ -119,8 +119,7 @@ function addEvent(user, event) {
     }
     const eventRef = collection(db, 'events');
     return new Promise((resolve, reject) => {
-        eventRef
-            .add(event)
+        addDoc(eventRef, event)
             .then((docRef) => {
                 resolve(docRef.id);
             })
@@ -173,11 +172,8 @@ function deleteEventById(user, id) {
         });
     }
 
-    const eventRef = collection(db, 'events');
     return new Promise((resolve, reject) => {
-        eventRef
-            .doc(id)
-            .delete()
+        deleteDoc(doc(db, 'events', id))
             .then(() => {
                 resolve();
             })

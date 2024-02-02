@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 
 // Components
 import NavBar from "/src/components/Navbar/navbar";
+import Footer from "/src/components/Footer/footer";
 
 // Pages
 import HomePage from "/src/pages/home";
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/admin" element={<AdminPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer></Footer>
         </Fragment>
     );
 }

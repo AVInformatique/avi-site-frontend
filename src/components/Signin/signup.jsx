@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {signup} from "/src/services/authService";
 
+import { ButtonComp } from '/src/components/General/buttonComp';
 
 class SignUp extends Component {
     onButtonClick = () => {
@@ -26,20 +27,31 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Sign Up</h1>
-                {/* TODO: Add form here with email and password fields */}
-                <form>
-                    <label>
-                        Email:
-                        <input type="text" name="email" id="email" />
-                    </label>
-                    <label>
-                        Password:
-                        <input type="text" name="password" id="password" />
-                    </label>
-                </form>
-                <button onClick={this.onButtonClick}>Sign Up</button>
+            <div className="grid wide signup section ">
+                <div className="row container">
+                    <h1 className="title-part col l-12">Sign Up</h1>
+                    <form className="form col l-12">
+                        <div className="form-row"> <div className="input-data">
+                                <input type="text" name="email" required/><br/>
+                                <div className="underline"></div>
+                                <label htmlFor="email">Name</label>
+                        </div></div>
+
+                        <div className="form-row"> <div className="input-data">
+                                <input type="text" name="password" required /><br/>
+                                <div className="underline"></div>
+                                <label htmlFor="password">Password</label>
+                        </div></div>
+                    </form>
+
+                    <ButtonComp 
+                        size="medium"
+                        text="Sign In"                       
+                        callback={this.onButtonClick}
+                    >Sign Up</ButtonComp>
+
+                </div>
+                
             </div>
         )
     }

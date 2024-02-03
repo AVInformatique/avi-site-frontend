@@ -3,12 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "/src/services/authService.js";
 import { auth } from "/src/config/firebaseConfig.js";
 
-import './admin.css'
-
 // Components
-import AdminAlumnis from "/src/components/Admin/AdminAlumnis";
-import AdminEvents from "/src/components/Admin/AdminEvents";
-import { ButtonComp } from '/src/components/General/buttonComp';
+import Admin from "../components/Admin/admin"
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -17,6 +13,7 @@ const AdminPage = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setUser(user);
+            console.log(user);
         });
 
         return unsubscribe;

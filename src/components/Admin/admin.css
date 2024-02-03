@@ -9,12 +9,12 @@
 .header-admin h1 {
     text-align: center;
     margin-top: 10%;
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .header-admin .head-bar {
     height: 50px;
-    width: 50%;
+    width: 60%;
     display: flex;
     gap: 30px;
     align-items: center;
@@ -111,9 +111,8 @@
     color: #FF4363;
 }
 
-.admin-content .deleteBtn {
+.admin-content .button {
     cursor: pointer;
-    background-color: #FF4363;
     border-radius: 15px;
     border: none;
     width: 100%;
@@ -125,10 +124,24 @@
     padding: 10px;
 }
 
-.admin-content .deleteBtn:hover {
+.admin-content .button.deleteBtn {
+    background-color: #FF4363;
+}
+
+.admin-content .button.updateBtn {
     background-color: #ffca57;
+}
+
+.admin-content .button:hover {
     color: white;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.3);
+}
+
+.admin-content .button.deleteBtn:hover {
+    background-color: #ffca57;
+}
+.admin-content .button.updateBtn:hover {
+    background-color: #FF4363;
 }
 
 .add-modal {

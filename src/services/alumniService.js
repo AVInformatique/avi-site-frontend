@@ -1,6 +1,5 @@
-import { doc, collection, getDocs,
-    query, orderBy, where, deleteDoc,
-    addDoc } from 'firebase/firestore';
+import { doc, collection, query, orderBy, where, 
+        getDocs, getDoc, deleteDoc, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 
 function getAlumnis() {
@@ -70,8 +69,8 @@ function addAlumni(user, alumni) {
 
     return new Promise((resolve, reject) => {
         addDoc(collection(db, 'alumnis'), alumni)
-            .then(() => {
-                resolve();
+            .then((docRef) => {
+                resolve(docRef.id);
                 console.log('Document successfully added!');
             })
             .catch(err => {
@@ -81,13 +80,13 @@ function addAlumni(user, alumni) {
 }
 
 function getAlumniById(id) {
-    const alumniRef = collection(db, 'alumnis');
+    const alumniRef = doc(db, 'alumnis', id); // Update this line
     return new Promise((resolve, reject) => {
-        alumniRef.doc(id).get()
-            .then(doc => {
+        getDoc(alumniRef) // Update this line
+            .then((doc) => {
                 resolve(doc.data());
             })
-            .catch(err => {
+            .catch((err) => {
                 reject(err);
             });
     });
@@ -101,9 +100,21 @@ function updateAlumniById(user, id, alumni) {
         });
     }
 
-    const alumniRef = collection(db, 'alumnis');
+    // Validation: name is required
+    if (!alumni.name) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: name is required');
+        });
+    }
+    // Validation: promotion must be a number
+    if (alumni.promotion && isNaN(alumni.promotion)) {
+        return new Promise((resolve, reject) => {
+            reject('Validation failed: promotion must be a number');
+        });
+    }
+
     return new Promise((resolve, reject) => {
-        alumniRef.doc(id).update(alumni)
+        updateDoc(doc(db, 'alumnis', id), alumni)
             .then(() => {
                 resolve();
             })
@@ -120,7 +131,7 @@ function deleteAlumniById(user, id) {
             reject('Validation failed: user is required');
         });
     }
-
+    console.log(id)
     return new Promise((resolve, reject) => {
         deleteDoc(doc(db, 'alumnis', id))
             .then(() => {

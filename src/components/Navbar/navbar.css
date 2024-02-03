@@ -18,17 +18,18 @@
     margin-top: 1em;
     
     opacity: 1;
-    max-height: 100%;
-    transition: opacity 300ms ease-out, max-height 100ms ease-out;
+    transition: opacity 300ms ease-out, width 300ms ease-out;
+    overflow: hidden;
 }
 
 .navigation.hide {
     opacity: 0;
-    max-width: 0;
+    width: 0;
 }
 
 .navigation.tel-view {
     display: none;
+    
 }
 
 .logo-nav img {

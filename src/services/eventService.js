@@ -1,6 +1,7 @@
-import { collection, getDocs, query, where, orderBy, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, query, where, orderBy, 
+        doc, addDoc, deleteDoc, getDocs, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
-import { doc, getDoc, addDoc, deleteDoc } from "firebase/firestore"; // Add this import statement
+
 
 function getEvents() {
     const eventRef = collection(db,"events");
@@ -151,11 +152,14 @@ function updateEventById(user, id, event) {
         });
     }
 
-    const eventRef = collection(db, 'events');
+    if (!event.name || !event.date) {
+        return new Promise((resolve, reject) => {
+            reject('Name and date are required');
+        });
+    }
+    
     return new Promise((resolve, reject) => {
-        eventRef
-            .doc(id)
-            .update(event)
+        updateDoc(doc(db, 'events', id), event)
             .then(() => {
                 resolve();
             })

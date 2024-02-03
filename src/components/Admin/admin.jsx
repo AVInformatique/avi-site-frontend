@@ -1,11 +1,13 @@
 import { useState, useEffect} from "react";
-import {getAlumnis, deleteAlumniById, addAlumni} from "/src/services/alumniService.js";
+import {getAlumnis, deleteAlumniById, addAlumni, getAlumniById} from "/src/services/alumniService.js";
 import {getEvents, addEvent, deleteEventById} from "/src/services/eventService.js";
 import { logout } from "/src/services/authService.js";
 import { useNavigate } from "react-router-dom";
 import "./admin.css";
 import PropTypes from "prop-types";
 import { Timestamp } from "firebase/firestore";
+import { updateAlumniById } from "../../services/alumniService";
+import { getEventById, updateEventById } from "../../services/eventService";
 
 
 const Admin = (props) => {
@@ -14,6 +16,8 @@ const Admin = (props) => {
     const [events, setEvents] = useState([]);
     const [showAlumniModal, setShowAlumniModal] = useState(false);
     const [showEventModal, setShowEventModal] = useState(false);
+    const [currentActionAlumnis, setCurrentActionAlumnis] = useState('Create');
+    const [currentActionEvents, setCurrentActionEvents] = useState('Create');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,20 +33,53 @@ const Admin = (props) => {
         fetchData();
     }, []);
 
-    const openAlumniModal = () => {
+    const openAlumniModal = (action='Create') => {
+        if (action != currentActionAlumnis) {
+            document.getElementById("alumni-modal").reset();
+        }
         setShowAlumniModal(true);
         setShowEventModal(false);
+        setCurrentActionAlumnis(action)
     };
     
     const closeModal = () => {
         setShowAlumniModal(false);
         setShowEventModal(false);
+        setCurrentActionAlumnis('None')
     };
 
-    const openEventModal = () => {
+    const openEventModal = (action='Create') => {
+        if (action != currentActionEvents ) {
+            document.getElementById("event-modal").reset();
+        }
         setShowEventModal(true);
         setShowAlumniModal(false);
+        setCurrentActionEvents (action)
     };
+
+    const showUpdateAlumni = async (id) => {
+        openAlumniModal('Update');
+        const alumni = await getAlumniById(id);
+        const form = document.getElementById('alumni-modal');
+
+        form._id.value = id;
+        form.name.value = alumni.name;
+        form.major.value = alumni.major;
+        form.promotion.value = alumni.promotion;
+        form.image.value = alumni.image;
+    }
+
+    const showUpdateEvent = async (id) => {
+        openEventModal('Update');
+        const event = await getEventById(id);
+        const form = document.getElementById('event-modal');
+
+        form._id.value = id;
+        form.name.value = event.name;
+        form.description.value = event.description;
+        form.date.value = event.date.toDate().toISOString().slice(0,-1)
+        form.image.value = event.image;
+    }
 
     const onAddAlumni = async (event) => {
         event.preventDefault();
@@ -54,7 +91,7 @@ const Admin = (props) => {
             image: form.image.value,
         };
         // Add the alumni to the database
-        await addAlumni(props.currentUser, alumni);
+        alumni.id = await addAlumni(props.currentUser, alumni);
         setAluminis([...alumnis, alumni]);
         closeModal();
         document.getElementById("alumni-modal").reset();
@@ -70,11 +107,49 @@ const Admin = (props) => {
             image: form.image.value,
         };
         // Add the event to the database
-        await addEvent(props.currentUser, eventObj);
+        addEvent(props.currentUser, eventObj);
         setEvents([...events, eventObj]);
         closeModal();
         document.getElementById("event-modal").reset();
     };
+
+    const onUpdateAlumni = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const id = form._id.value;
+        const alumni = {
+            name: form.name.value,
+            major: form.major.value,
+            promotion: parseInt(form.promotion.value),
+            image: form.image.value,
+        };
+        // Add the alumni to the database
+        updateAlumniById(props.currentUser, id, alumni);
+        alumni.id = id;
+        const anotherAlumnis = alumnis.filter((alumni) => alumni.id !== id)
+        closeModal();
+        setAluminis([...anotherAlumnis, alumni]);
+        document.getElementById("alumni-modal").reset();
+    }
+
+    const onUpdateEvent = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const id = form._id.value;
+        const event = {
+            name: form.name.value,
+            description: form.description.value,
+            date: Timestamp.fromDate(new Date(form.date.value)),
+            image: form.image.value,
+        };
+        // Add the alumni to the database
+        updateEventById(props.currentUser, id, event);
+        event.id = id;
+        const anotherEvents = events.filter((event) => event.id !== id)
+        closeModal();
+        setEvents([...anotherEvents, event]);
+        document.getElementById("event-modal").reset();
+    }
 
     const onDeleteAlumni = (alumniId) => {
         // Alert the user to confirm the deletion
@@ -126,6 +201,7 @@ const Admin = (props) => {
                         <th>Promotion</th>
                         <th>Image link</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,11 +211,16 @@ const Admin = (props) => {
                             <td>{alumni.major}</td>
                             <td>{alumni.promotion}</td>
                             <td><a className="img-admin" href={alumni.image}>{alumni.image}</a></td>
-                            <td><button className="deleteBtn" onClick={
+                            <td><button className="button deleteBtn" onClick={
                                 () => {
                                     onDeleteAlumni(alumni.id);
                                 }
                             }>Delete</button></td>
+                            <td><button className="button updateBtn" onClick={
+                                () => {
+                                    showUpdateAlumni(alumni.id);
+                                }
+                            }>Update</button></td>
                         </tr>
                     ))}
                 </tbody>
@@ -162,6 +243,7 @@ const Admin = (props) => {
                         <th>Date</th>
                         <th>Image link</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -171,11 +253,16 @@ const Admin = (props) => {
                             <td>{event.description}</td>
                             <td>{event.date.toDate().toLocaleString()}</td>
                             <td><a className={event.img != null ? "img-admin" : ""} href={event.img}>{event.img != null ? "Click to open" : "No link"}</a></td>
-                            <td><button className="deleteBtn" onClick={
+                            <td><button className="button deleteBtn" onClick={
                                 () => {
                                     onDeleteEvent(event.id);
                                 }
                             }>Delete</button></td>
+                            <td><button className="button updateBtn" onClick={
+                                () => {
+                                    showUpdateEvent(event.id);
+                                }
+                            }>Update</button></td>
                         </tr>
                     ))}
                 </tbody>
@@ -186,17 +273,19 @@ const Admin = (props) => {
     const renderAlumniModal = (
         <div className={showAlumniModal ? "add-modal" : "no-display"}>
             <h2>Add a new alumni</h2>
-            <form id="alumni-modal" onSubmit={onAddAlumni}>
+            <form id="alumni-modal"
+                onSubmit={currentActionAlumnis === "Update" ? onUpdateAlumni : onAddAlumni}>
+                <input type="text" name="_id" style={{display:"None", height:"0px"}}/>
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" required/><br/>
-                <label htmlFor="major">Major</label>
+                <label htmlFor="text">Major</label>
                 <input type="text" id="major" name="major" required/><br/>
-                <label htmlFor="promotion">Promotion</label>
-                <input type="text" id="promotion" name="promotion" required/><br/>
+                <label htmlFor="major">Promotion</label>
+                <input type="number" id="promotion" name="promotion" required/><br/>
                 <label htmlFor="image">Image link</label>
                 <input type="text" id="image" name="image" required/><br/>
-                <button type="submit">Add</button>
-                <button onClick={closeModal}>Close</button>
+                <button type="submit">{currentActionAlumnis === "Update" ? "Update":"Add"}</button>
+                <button type="button" onClick={closeModal}>Close</button>
             </form>
             
         </div>
@@ -205,7 +294,9 @@ const Admin = (props) => {
     const renderEventModal = (
         <div className={showEventModal ? "add-modal" : "no-display"}>
             <h2>Add a new event</h2>
-            <form id="event-modal" onSubmit={onAddEvent}>
+            <form id="event-modal" 
+                onSubmit={currentActionEvents === "Update" ? onUpdateEvent : onAddEvent}>
+                <input type="text" name="_id" style={{display:"None", height:"0px"}}/>
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" required/><br/>
                 <label htmlFor="description">Description</label>
@@ -214,8 +305,8 @@ const Admin = (props) => {
                 <input type="datetime-local" id="date" name="date" required/><br/>
                 <label htmlFor="image">Image link</label>
                 <input type="text" id="image" name="image"/><br/>
-                <button type="submit">Add</button>
-                <button onClick={closeModal}>Close</button>
+                <button type="submit">{currentActionEvents === "Update" ? "Update":"Add"}</button>
+                <button type="button" onClick={closeModal}>Close</button>
             </form>
             
         </div>

@@ -4,8 +4,7 @@ import { logout } from "/src/services/authService.js";
 import { auth } from "/src/config/firebaseConfig.js";
 
 // Components
-import Admin from "/src/components/Admin/admin";
-
+import Admin from "../components/Admin/admin"
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -14,6 +13,7 @@ const AdminPage = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setUser(user);
+            console.log(user);
         });
 
         return unsubscribe;
@@ -25,7 +25,7 @@ const AdminPage = () => {
     // };
 
     return (
-        <div>
+        <div className="admin">
             {user ? (
                 <>
                     {/* <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p> */}

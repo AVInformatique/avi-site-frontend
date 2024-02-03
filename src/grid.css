@@ -18,6 +18,14 @@
     padding-bottom: 60px !important;
 }
 
+.section-overlap {
+    position: absolute;
+    width: 100%;
+    background-color: #f0fffe;
+    z-index: -1;
+    margin: 0
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;

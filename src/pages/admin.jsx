@@ -22,27 +22,19 @@ const AdminPage = () => {
         return unsubscribe;
     }, []);
 
-    const handleSignOut = async () => {
-        await logout();
-        navigate("/signin");
-    };
+    // const handleSignOut = async () => {
+    //     await logout();
+    //     navigate("/signin");
+    // };
 
     return (
         <div className="admin">
             {user ? (
-                <div className = "admin-logged-in">
-                    <div className="welcome-admin grid wide">
-                        <p className="welcome-phrase">Hello, {user.email}! </p>
-                        <ButtonComp 
-                            divClassName="button-log-out" 
-                            size = "small"
-                            text="Sign out"
-                            callback={handleSignOut}>Sign Out</ButtonComp>
-                    </div>
-                    
-                    <AdminAlumnis currentUser={user} />
-                    <AdminEvents currentUser={user} />
-                </div>
+                <>
+                    {/* <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p> */}
+
+                    <Admin currentUser={user} />
+                </>
             ) : (
                 <p>Please sign in.</p>
         )}

@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where, orderBy, addDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
-import { doc, getDoc } from "firebase/firestore"; // Add this import statement
+import { doc, getDoc, addDoc, deleteDoc } from "firebase/firestore"; // Add this import statement
 
 function getEvents() {
     const eventRef = collection(db,"events");
@@ -117,13 +117,14 @@ function addEvent(user, event) {
             reject('Name and date are required');
         });
     }
-    const eventRef = collection(db, 'events');
+
     return new Promise((resolve, reject) => {
-        addDoc(eventRef, event)
-            .then((docRef) => {
-                resolve(docRef.id);
+        addDoc(collection(db, 'events'), event)
+            .then(() => {
+                resolve();
+                console.log('Document successfully added!');
             })
-            .catch((err) => {
+            .catch(err => {
                 reject(err);
             });
     });
@@ -176,8 +177,9 @@ function deleteEventById(user, id) {
         deleteDoc(doc(db, 'events', id))
             .then(() => {
                 resolve();
+                console.log('Document successfully deleted!');
             })
-            .catch((err) => {
+            .catch(err => {
                 reject(err);
             });
     });

@@ -29,7 +29,7 @@
 
 .header-admin .head-bar button {
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     width: 20%;
@@ -70,7 +70,7 @@
 
 .admin-addBtn {
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     height: 100%;
@@ -90,7 +90,7 @@
 }
 
 .admin-content thead {
-    background-color: #FF4363;
+    background-color: #ff4363;
     color: white;
     font-weight: bold;
 }
@@ -99,7 +99,8 @@
     background-color: #fbe2e2;
 }
 
-.admin-content th, td {
+.admin-content th,
+td {
     padding: 10px;
 }
 
@@ -109,7 +110,7 @@
 }
 
 .admin-content .img-admin:hover {
-    color: #FF4363;
+    color: #ff4363;
     cursor: pointer;
 }
 
@@ -127,7 +128,7 @@
 }
 
 .admin-content .button.deleteBtn {
-    background-color: #FF4363;
+    background-color: #ff4363;
 }
 
 .admin-content .button.updateBtn {
@@ -143,7 +144,7 @@
     background-color: #ffca57;
 }
 .admin-content .button.updateBtn:hover {
-    background-color: #FF4363;
+    background-color: #ff4363;
 }
 
 .add-modal {
@@ -184,7 +185,7 @@
     margin-top: 10px;
     margin-right: 10px;
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     width: 30%;
@@ -234,7 +235,7 @@
     margin-top: 10px;
     margin-right: 10px;
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     width: 30%;
@@ -249,7 +250,6 @@
     color: white;
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
 }
-
 
 .no-display {
     display: none;

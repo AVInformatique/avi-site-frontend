@@ -121,8 +121,8 @@ function addEvent(user, event) {
 
     return new Promise((resolve, reject) => {
         addDoc(collection(db, 'events'), event)
-            .then(() => {
-                resolve();
+            .then((docRef) => {
+                resolve(docRef.id);
                 console.log('Document successfully added!');
             })
             .catch(err => {
@@ -160,8 +160,8 @@ function updateEventById(user, id, event) {
     
     return new Promise((resolve, reject) => {
         updateDoc(doc(db, 'events', id), event)
-            .then(() => {
-                resolve();
+            .then((docRef) => {
+                resolve(docRef.id);
             })
             .catch((err) => {
                 reject(err);

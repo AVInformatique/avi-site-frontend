@@ -1,0 +1,41 @@
+.show-alumnis-home .head {
+    color: #1F2F54;
+    font-family: "Manrope-Medium", Helvetica;
+}
+
+.show-alumnis-home .head .intro {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-family: "Manrope-SemiBold", Helvetica;
+    margin: 0;
+}
+
+.show-alumnis-home .head .title {
+    text-align: center;
+    font-size: 75px;
+    font-style: normal;
+    font-family: "Manrope-Bold", Helvetica;
+    line-height: 80px;
+    margin: 20px 0 0 0 ;
+}
+
+.show-alumnis-home .head .intro-description {
+    display: flex;
+    width: 898px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;;
+
+    text-align: justify;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.show-alumnis-home .album-promo-btn {
+    margin-top: 50px;
+    left: 50%;
+    transform: translate(-50%,0);
+}

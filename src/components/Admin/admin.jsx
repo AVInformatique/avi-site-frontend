@@ -77,8 +77,8 @@ const Admin = (props) => {
         form._id.value = id;
         form.name.value = event.name;
         form.description.value = event.description;
-        form.date.value = event.date.toDate().toISOString().slice(0,-1)
-        form.image.value = event.image;
+        form.date.value = event.date.toDate().toISOString().slice(0,-8)
+        form.img.value = event.img;
     }
 
     const onAddAlumni = async (event) => {
@@ -104,7 +104,7 @@ const Admin = (props) => {
             name: form.name.value,
             description: form.description.value,
             date: Timestamp.fromDate(new Date(form.date.value)),
-            image: form.image.value,
+            img: form.img.value,
         };
         // Add the event to the database
         event.id = await addEvent(props.currentUser, eventObj);
@@ -140,7 +140,7 @@ const Admin = (props) => {
             name: form.name.value,
             description: form.description.value,
             date: Timestamp.fromDate(new Date(form.date.value)),
-            image: form.image.value,
+            img: form.img.value,
         };
         // Add the alumni to the database
         updateEventById(props.currentUser, id, event);
@@ -302,9 +302,12 @@ const Admin = (props) => {
                 <label htmlFor="description">Description</label>
                 <input type="text" id="description" name="description" required/><br/>
                 <label htmlFor="date">Date</label>
-                <input type="datetime-local" id="date" name="date" required/><br/>
-                <label htmlFor="image">Image link</label>
-                <input type="text" id="image" name="image"/><br/>
+                <input type="datetime-local" 
+                        min="2018-01-01T00:00"
+                        max="2030-12-31T00:00"
+                        id="date" name="date" required/><br/>
+                <label htmlFor="img">Image link</label>
+                <input type="text" id="img" name="img"/><br/>
                 <button type="submit">{currentActionEvents === "Update" ? "Update":"Add"}</button>
                 <button type="button" onClick={closeModal}>Close</button>
             </form>

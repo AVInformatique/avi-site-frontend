@@ -1,86 +1,77 @@
-// eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
-import {getAlumnisByPromotion} from "/src/services/alumniService.js";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { getAlumnisByPromotion } from "/src/services/alumniService.js";
 import "./alumnis.css";
+import { AlumniBox } from "./alumniBox.jsx";
 
-// Component for displaying all alumnis
-import {AlumniBox} from "./alumniBox.jsx";
+const Alumnis = () => {
+    const [alumnis, setAlumnis] = useState([]);
+    const [promotionYears, setPromotionYears] = useState([]);
+    const [chosenPromo, setChosenPromo] = useState(new Date().getFullYear() - 1);
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const year = queryParams.get("year");
 
-class Alumnis extends Component {
-    state = {
-        alumnis: [],
-        promotionYears: [],
-        chosenPromo: new Date().getFullYear() - 1
-    };
+    useEffect(() => {
+        initializePromotionYears();
+        const defaultYear = (year !== null && year !== "" && year <= new Date().getFullYear() - 1 && year >= 2015) ? year : new Date().getFullYear() - 1;
+        handlePromoChange({ target: { value: defaultYear } });
+    }, [year]);
 
-    initializePromotionYears = () => {
-        const years = [];
+    const initializePromotionYears = () => {
         const currentYear = new Date().getFullYear() - 1;
-        for (let i = currentYear; i >= 2015; i--) {
-            years.push(i);
-        }
-        this.setState({ promotionYears: years });
+        const years = Array.from({ length: currentYear - 2014 }, (_, index) => currentYear - index);
+        setPromotionYears(years);
     }
 
-    handlePromoChange = (event) => {
-        event.preventDefault();
+    const handlePromoChange = (event) => {
         const promo = event.target.value;
-        this.setState({ chosenPromo: promo });
-        this.handleAlumniList(promo);
+        setChosenPromo(promo);
+        handleAlumniList(promo);
     }
 
-    handleAlumniList = (year) => {
-        getAlumnisByPromotion(parseInt(year)).then((data) => {
-            this.setState({ alumnis: data });
-        })
-            .catch((error) => console.log(error));
+    const handleAlumniList = (year) => {
+        getAlumnisByPromotion(parseInt(year))
+            .then((data) => setAlumnis(data))
+            .catch((error) => console.error("Error fetching alumni data:", error));
     }
 
-    componentDidMount() {
-        this.initializePromotionYears();
-        this.handleAlumniList(this.state.chosenPromo)
-    }
-
-    render() {
-        const header = (
-            <div className="header-alumni">
-                <h1>ALUMNIS</h1>
-                <div className="intro-alumni">
-                    <p>L'Association des Vietnamiens à l'INSA (AVI) est une association étudiante de l'INSA.
-                            Elle a pour but de promouvoir la culture vietnamienne au sein de l'école et de la faire découvrir.</p>
-                </div>
-                <div className="searchBar">
-                    <label htmlFor="promotion">Promotion year</label>
-                    <select id="promotion" name="promotion" value={this.state.chosenPromo} onChange={this.handlePromoChange}>
-                        {this.state.promotionYears.map((year) => (
-                            <option key={year} value={year}>{year}</option>
-                        ))}
-                    </select>
-                </div>
+    const header = (
+        <div className="header-alumni">
+            <h1>ALUMNIS</h1>
+            <div className="intro-alumni">
+                <p>L'Association des Vietnamiens à l'INSA (AVI) est une association étudiante de l'INSA.
+                        Elle a pour but de promouvoir la culture vietnamienne au sein de l'école et de la faire découvrir.</p>
             </div>
-        );
-
-        const alumniList = (
-            <div className="row-alumni">
-                <div className="big-box">
-                    {this.state.alumnis.map((alumni) => (
-                        <div className="column-alumni" key={alumni.id}>
-                            <AlumniBox name={alumni.name} major={alumni.major} promotion={alumni.promotion} image={alumni.image} />
-                        </div>
+            <div className="searchBar">
+                <label htmlFor="promotion">Promotion year</label>
+                <select id="promotion" name="promotion" value={chosenPromo} onChange={handlePromoChange}>
+                    {promotionYears.map((year) => (
+                        <option key={year} value={year}>{year}</option>
                     ))}
-                </div>
+                </select>
             </div>
-        );
-    
-        // Each row contains 3 alumni boxes
-        // Config in alumnis.css
-        return (
-            <div>
-                {header}
-                {alumniList}
+        </div>
+    );
+
+    const alumniList = (
+        <div className="row-alumni">
+            <div className="big-box">
+                {alumnis.map((alumni) => (
+                    <div className="column-alumni" key={alumni.id}>
+                        <AlumniBox {...alumni} />
+                    </div>
+                ))}
             </div>
-        );
-    }
+        </div>
+    );
+
+    return (
+        <div>
+            {header}
+            {alumniList}
+        </div>
+    );
 }
 
 export default Alumnis;

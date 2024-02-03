@@ -44,7 +44,7 @@ const Admin = (props) => {
         setShowAlumniModal(false);
     };
 
-    const onAddAlumni = (event) => {
+    const onAddAlumni = async (event) => {
         event.preventDefault();
         const form = event.target;
         const alumni = {
@@ -54,13 +54,13 @@ const Admin = (props) => {
             image: form.image.value,
         };
         // Add the alumni to the database
-        addAlumni(props.currentUser, alumni);
+        await addAlumni(props.currentUser, alumni);
         setAluminis([...alumnis, alumni]);
         closeModal();
         document.getElementById("alumni-modal").reset();
     };
 
-    const onAddEvent = (event) => {
+    const onAddEvent = async (event) => {
         event.preventDefault();
         const form = event.target;
         const eventObj = {
@@ -70,7 +70,7 @@ const Admin = (props) => {
             image: form.image.value,
         };
         // Add the event to the database
-        addEvent(props.currentUser, eventObj);
+        await addEvent(props.currentUser, eventObj);
         setEvents([...events, eventObj]);
         closeModal();
         document.getElementById("event-modal").reset();

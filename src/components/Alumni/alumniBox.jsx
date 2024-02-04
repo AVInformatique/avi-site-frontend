@@ -5,6 +5,8 @@
 import PropTypes from "prop-types";
 import "./alumniBox.css";
 
+import { alumni_default_image } from "/src/images"
+
 
 export const AlumniBox = ({ name, major, image }) => {
     return (
@@ -17,9 +19,8 @@ export const AlumniBox = ({ name, major, image }) => {
                     <CardSubtitle>{promotion}</CardSubtitle>
                 </CardBody>
             </Card> */}
-            <div className="img-container">
-                <img className="alumni-box-img" src={image} alt={name}/>
-                
+            <div className="img-container"> 
+                <img className="alumni-box-img" src={image || alumni_default_image.src} alt={name}/>     
             </div>
             <div className="alumni-box-info">
                 <div className="alumni-box-name">{name}</div>

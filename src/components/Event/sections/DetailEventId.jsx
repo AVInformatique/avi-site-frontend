@@ -10,6 +10,9 @@ import { ButtonComp } from '/src/components/General/buttonComp';
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 
+//images
+import { event_default_image } from "/src/images"
+
 const DetailEventId = ({event}) => {
     const date = event.date ? event.date.toDate() : new Date("1/1/2003");
     return (
@@ -42,10 +45,7 @@ const DetailEventId = ({event}) => {
                     </div>
                     <div className="col col l-1"></div>
                     <div className="img col l-4">
-                        {event.img ? 
-                        <img className="event-img" src={event.img}/>
-                        : <div className="event-img"></div> 
-                        }
+                        <img className="event-img" src={event.img || event_default_image.src}/>
                     </div>
                 </div>
             </div>

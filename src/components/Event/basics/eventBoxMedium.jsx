@@ -5,6 +5,9 @@ import './eventBoxMedium.css';
 //components
 import { ButtonComp } from '/src/components/General/buttonComp';
 
+//images
+import { event_default_image } from "/src/images"
+
 export const EventBoxMedium = ({ event = {}, divClassName }) => {
     const [state, dispatch] = useState('default');
     const date = event.date ? event.date.toDate() : new Date("1/1/2003");
@@ -19,10 +22,7 @@ export const EventBoxMedium = ({ event = {}, divClassName }) => {
              onMouseUp={() => {dispatch('hover');}}
         >
             <div className="up-part">
-                {event.img ? 
-                    <img className="event-img" src={event.img}/>
-                    : <div className="event-img"></div> 
-                }
+                <img className="event-img" src={event.img || event_default_image.src}/>
                 <div className="date-month">
                     <span className="day">{`${(date.getDate() < 10) ? '0' : ''}${date.getDate()}`}</span>
                     <span className="mon">{monthString[date.getMonth()]}</span>

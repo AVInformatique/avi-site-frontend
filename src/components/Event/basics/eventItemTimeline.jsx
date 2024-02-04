@@ -5,6 +5,9 @@ import './eventItemTimeline.css';
 //components
 import { ButtonComp } from '/src/components/General/buttonComp';
 
+//images
+import { event_default_image } from "/src/images"
+
 export const EventItemTimeline = ({ event = {}, direction = 'right', divClassName = '' }) => {
     const [state, dispatch] = useState('default');
 
@@ -18,10 +21,7 @@ export const EventItemTimeline = ({ event = {}, direction = 'right', divClassNam
         >
             <div className="overlap">
                 <div className="img-part">
-                    {event.img ? 
-                        <img className="event-img" src = {event.img}/>
-                        : <div className="event-img"></div> 
-                    }
+                        <img className="event-img" src = {event.img || event_default_image.src}/>
                 </div>
 
                 <div className="details-part">

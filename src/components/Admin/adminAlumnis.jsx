@@ -1,5 +1,11 @@
-import { useState, useEffect} from "react";
-import {getAlumnis, deleteAlumniById, addAlumni, getAlumniById, updateAlumniById} from "/src/services/alumniService.js";
+import { useState, useEffect } from "react";
+import {
+    getAlumnis,
+    deleteAlumniById,
+    addAlumni,
+    getAlumniById,
+    updateAlumniById,
+} from "/src/services/alumniService.js";
 import PropTypes from "prop-types";
 import { Timestamp } from "firebase/firestore";
 
@@ -8,7 +14,7 @@ import { Timestamp } from "firebase/firestore";
 const AdminAlumnis = (props) => {
     const [alumnis, setAluminis] = useState([]);
     const [showAlumniModal, setShowAlumniModal] = useState(false);
-    const [currentActionAlumnis, setCurrentActionAlumnis] = useState('Create');
+    const [currentActionAlumnis, setCurrentActionAlumnis] = useState("Create");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,36 +22,36 @@ const AdminAlumnis = (props) => {
                 const alumnis = await getAlumnis();
                 setAluminis(alumnis);
             } catch (error) {
-                console.error('Error fetching alumnis:', error);
+                console.error("Error fetching alumnis:", error);
             }
         };
         fetchData();
     }, []);
 
-    const openAlumniModal = (action='Create') => {
+    const openAlumniModal = (action = "Create") => {
         if (action != currentActionAlumnis) {
             document.getElementById("alumni-modal").reset();
         }
         setShowAlumniModal(true);
-        setCurrentActionAlumnis(action)
+        setCurrentActionAlumnis(action);
     };
-    
+
     const closeModal = () => {
         setShowAlumniModal(false);
-        setCurrentActionAlumnis('None')
+        setCurrentActionAlumnis("None");
     };
 
     const showUpdateAlumni = async (id) => {
-        openAlumniModal('Update');
+        openAlumniModal("Update");
         const alumni = await getAlumniById(id);
-        const form = document.getElementById('alumni-modal');
+        const form = document.getElementById("alumni-modal");
 
         form._id.value = id;
         form.name.value = alumni.name;
         form.major.value = alumni.major;
         form.promotion.value = alumni.promotion;
         form.image.value = alumni.image;
-    }
+    };
 
     const onAddAlumni = async (event) => {
         event.preventDefault();
@@ -67,20 +73,26 @@ const AdminAlumnis = (props) => {
         event.preventDefault();
         const form = event.target;
         const id = form._id.value;
-        const alumni = {
+        const alumniToUpdate = {
             name: form.name.value,
             major: form.major.value,
             promotion: parseInt(form.promotion.value),
             image: form.image.value,
         };
         // Add the alumni to the database
-        updateAlumniById(props.currentUser, id, alumni);
-        alumni.id = id;
-        const anotherAlumnis = alumnis.filter((alumni) => alumni.id !== id)
+        updateAlumniById(props.currentUser, id, alumniToUpdate);
+        setAluminis((prevAlumnis) => {
+            return prevAlumnis.map((alumni) => {
+                if (alumni.id === id) {
+                    return { ...alumni, ...alumniToUpdate };
+                } else {
+                    return alumni;
+                }
+            });
+        });
         closeModal();
-        setAluminis([...anotherAlumnis, alumni]);
         document.getElementById("alumni-modal").reset();
-    }
+    };
 
     const onDeleteAlumni = (alumniId) => {
         // Alert the user to confirm the deletion
@@ -96,9 +108,11 @@ const AdminAlumnis = (props) => {
         <div className="each-section">
             <div className="admin-addBtn-div">
                 <h2>Alumnis Table</h2>
-                <button className="admin-addBtn" onClick={openAlumniModal}>Add alumni</button>
+                <button className="admin-addBtn" onClick={openAlumniModal}>
+                    Add alumni
+                </button>
             </div>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -116,17 +130,31 @@ const AdminAlumnis = (props) => {
                             <td>{alumni.name}</td>
                             <td>{alumni.major}</td>
                             <td>{alumni.promotion}</td>
-                            <td><a className="img-admin" href={alumni.image}>{alumni.image}</a></td>
-                            <td><button className="button deleteBtn" onClick={
-                                () => {
-                                    onDeleteAlumni(alumni.id);
-                                }
-                            }>Delete</button></td>
-                            <td><button className="button updateBtn" onClick={
-                                () => {
-                                    showUpdateAlumni(alumni.id);
-                                }
-                            }>Update</button></td>
+                            <td>
+                                <a className="img-admin" href={alumni.image}>
+                                    {alumni.image}
+                                </a>
+                            </td>
+                            <td>
+                                <button
+                                    className="button deleteBtn"
+                                    onClick={() => {
+                                        onDeleteAlumni(alumni.id);
+                                    }}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                            <td>
+                                <button
+                                    className="button updateBtn"
+                                    onClick={() => {
+                                        showUpdateAlumni(alumni.id);
+                                    }}
+                                >
+                                    Update
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -137,21 +165,38 @@ const AdminAlumnis = (props) => {
     const renderAlumniModal = (
         <div className={showAlumniModal ? "add-modal" : "no-display"}>
             <h2>Add a new alumni</h2>
-            <form id="alumni-modal"
-                onSubmit={currentActionAlumnis === "Update" ? onUpdateAlumni : onAddAlumni}>
-                <input type="text" name="_id" style={{display:"None", height:"0px"}}/>
+            <form
+                id="alumni-modal"
+                onSubmit={
+                    currentActionAlumnis === "Update"
+                        ? onUpdateAlumni
+                        : onAddAlumni
+                }
+            >
+                <input
+                    type="text"
+                    name="_id"
+                    style={{ display: "None", height: "0px" }}
+                />
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required/><br/>
+                <input type="text" id="name" name="name" required />
+                <br />
                 <label htmlFor="text">Major</label>
-                <input type="text" id="major" name="major" required/><br/>
+                <input type="text" id="major" name="major" required />
+                <br />
                 <label htmlFor="major">Promotion</label>
-                <input type="number" id="promotion" name="promotion" required/><br/>
+                <input type="number" id="promotion" name="promotion" required />
+                <br />
                 <label htmlFor="image">Image link</label>
-                <input type="text" id="image" name="image" required/><br/>
-                <button type="submit">{currentActionAlumnis === "Update" ? "Update":"Add"}</button>
-                <button type="button" onClick={closeModal}>Close</button>
+                <input type="text" id="image" name="image" required />
+                <br />
+                <button type="submit">
+                    {currentActionAlumnis === "Update" ? "Update" : "Add"}
+                </button>
+                <button type="button" onClick={closeModal}>
+                    Close
+                </button>
             </form>
-            
         </div>
     );
 
@@ -161,7 +206,7 @@ const AdminAlumnis = (props) => {
             {renderAlumniModal}
         </div>
     );
-}
+};
 
 AdminAlumnis.propTypes = {
     currentUser: PropTypes.object.isRequired,

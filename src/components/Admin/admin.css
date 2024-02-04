@@ -29,7 +29,7 @@
 
 .header-admin .head-bar button {
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     width: 20%;
@@ -70,7 +70,7 @@
 
 .admin-addBtn {
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     height: 100%;
@@ -90,7 +90,7 @@
 }
 
 .admin-content thead {
-    background-color: #FF4363;
+    background-color: #ff4363;
     color: white;
     font-weight: bold;
 }
@@ -99,16 +99,19 @@
     background-color: #fbe2e2;
 }
 
-.admin-content th, td {
+.admin-content th,
+td {
     padding: 10px;
 }
 
 .admin-content .img-admin {
     color: black;
+    text-decoration: underline;
 }
 
 .admin-content .img-admin:hover {
-    color: #FF4363;
+    color: #ff4363;
+    cursor: pointer;
 }
 
 .admin-content .button {
@@ -125,7 +128,7 @@
 }
 
 .admin-content .button.deleteBtn {
-    background-color: #FF4363;
+    background-color: #ff4363;
 }
 
 .admin-content .button.updateBtn {
@@ -141,7 +144,7 @@
     background-color: #ffca57;
 }
 .admin-content .button.updateBtn:hover {
-    background-color: #FF4363;
+    background-color: #ff4363;
 }
 
 .add-modal {
@@ -182,7 +185,7 @@
     margin-top: 10px;
     margin-right: 10px;
     cursor: pointer;
-    background-color: #FF4363;
+    background-color: #ff4363;
     border-radius: 15px;
     border: none;
     width: 30%;
@@ -194,6 +197,55 @@
 }
 
 .add-modal button:hover {
+    background-color: #ffca57;
+    color: white;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+}
+
+.agenda-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 400px;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    padding: 0 30px 30px 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(152, 147, 187, 0.6);
+}
+
+.text-agenda {
+    margin-top: -15px;
+    width: 100%;
+    max-height: 280px;
+    overflow: auto;
+}
+
+.agenda-modal h1 {
+    text-align: center;
+}
+
+.agenda-modal p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.agenda-modal button {
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #ff4363;
+    border-radius: 15px;
+    border: none;
+    width: 30%;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.agenda-modal button:hover {
     background-color: #ffca57;
     color: white;
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);

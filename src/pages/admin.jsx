@@ -1,13 +1,12 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "/src/services/authService.js";
 import { auth } from "/src/config/firebaseConfig.js";
 
 // Components
-import Admin from "../components/Admin/admin"
+import Admin from "../components/Admin/admin";
 
 const AdminPage = () => {
-    const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -19,24 +18,25 @@ const AdminPage = () => {
         return unsubscribe;
     }, []);
 
-    // const handleSignOut = async () => {
-    //     await logout();
-    //     navigate("/signin");
-    // };
+    const errorStyles = {
+        color: "red",
+        fontSize: "20px",
+        textAlign: "center",
+        marginTop: "200px",
+        marginBottom: "200px",
+    };
 
     return (
-        <div className="admin">
+        <div className="admin" style={errorStyles}>
             {user ? (
                 <>
-                    {/* <p>Hello, {user.email}! <button onClick={handleSignOut}>Sign Out</button></p> */}
-
                     <Admin currentUser={user} />
                 </>
             ) : (
-                <p>Please sign in.</p>
-        )}
+                <h1>Oops, it seems that you're not logged in yet!</h1>
+            )}
         </div>
     );
-}
+};
 
 export default AdminPage;

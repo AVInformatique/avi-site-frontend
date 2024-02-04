@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { logout } from "/src/services/authService.js";
 import { auth } from "/src/config/firebaseConfig.js";
 
 // Components

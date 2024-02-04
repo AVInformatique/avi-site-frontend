@@ -59,6 +59,7 @@ const AdminEvents = (props) => {
         form.name.value = event.name;
         form.description.value = event.description;
         form.date.value = event.date.toDate().toISOString().slice(0, -8);
+        form.agenda.value = event.agenda;
         form.img.value = event.img;
     };
 
@@ -70,6 +71,7 @@ const AdminEvents = (props) => {
             description: form.description.value,
             date: Timestamp.fromDate(new Date(form.date.value)),
             img: form.img.value,
+            agenda: form.agenda.value,
         };
         // Add the event to the database
         eventObj.id = await addEvent(props.currentUser, eventObj);
@@ -87,8 +89,9 @@ const AdminEvents = (props) => {
             description: form.description.value,
             date: Timestamp.fromDate(new Date(form.date.value)),
             img: form.img.value,
+            agenda: form.agenda.value,
         };
-        // Add the alumni to the database
+        // update event
         updateEventById(props.currentUser, id, eventToUpdate);
         setEvents((prevEvents) => {
             return prevEvents.map((eventObj) => {
@@ -195,47 +198,36 @@ const AdminEvents = (props) => {
 
     const renderEventModal = (
         <div className={showEventModal ? "add-modal" : "no-display"}>
-            <h2>Add a new event</h2>
-            <form
-                id="event-modal"
-                onSubmit={
-                    currentActionEvents === "Update"
-                        ? onUpdateEvent
-                        : onAddEvent
-                }
-            >
-                <input
-                    type="text"
-                    name="_id"
-                    style={{ display: "None", height: "0px" }}
-                />
+            <h2>{`${currentActionEvents === "Update" ? "Update an event" : "Add a new event"}`}</h2>
+            <form id="event-modal"
+                onSubmit={ currentActionEvents === "Update" ? onUpdateEvent : onAddEvent}>
+                <input type="text" name="_id"
+                        style={{ display: "None", height: "0px" }}/>
+                
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required />
-                <br />
-                <label htmlFor="description">Description</label>
-                <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    required
-                />
-                <br />
+                <input type="text" id="name" name="name" required /><br />
+
                 <label htmlFor="date">Date</label>
-                <input
-                    type="datetime-local"
+                <input type="datetime-local" id="date" name="date"
                     min="2018-01-01T00:00"
                     max="2030-12-31T00:00"
-                    id="date"
-                    name="date"
-                    required
-                />
-                <br />
+                    required/><br />
+                
+                <label htmlFor="description">Description</label>
+                <textarea id="description" name="description" required 
+                        rows="4" cols="50"/> <br />
+                
+                <label htmlFor="agenda">Agenda</label>
+                <textarea id="agenda" name="agenda" 
+                        rows="8" cols="50"/><br />
+
                 <label htmlFor="img">Image link</label>
-                <input type="text" id="img" name="img" />
-                <br />
+                <input type="text" id="img" name="img" /><br />
+                
                 <button type="submit">
                     {currentActionEvents === "Update" ? "Update" : "Add"}
                 </button>
+
                 <button type="button" onClick={closeModal}>
                     Close
                 </button>

@@ -164,7 +164,7 @@ const AdminAlumnis = (props) => {
 
     const renderAlumniModal = (
         <div className={showAlumniModal ? "add-modal" : "no-display"}>
-            <h2>Add a new alumni</h2>
+            <h2>{`${currentActionAlumnis === "Update" ? "Update an alumni" : "Add a new alumni"}`}</h2>
             <form
                 id="alumni-modal"
                 onSubmit={

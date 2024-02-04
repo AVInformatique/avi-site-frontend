@@ -27,13 +27,15 @@ const AdminPage = () => {
     };
 
     return (
-        <div className="admin" style={errorStyles}>
+        <div>
             {user ? (
                 <>
                     <Admin currentUser={user} />
                 </>
             ) : (
-                <h1>Oops, it seems that you're not logged in yet!</h1>
+                <div className="admin" style={errorStyles}>
+                    <h1>Oops, it seems that you're not logged in yet!</h1>
+                </div>
             )}
         </div>
     );
